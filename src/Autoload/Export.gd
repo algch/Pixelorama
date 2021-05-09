@@ -38,20 +38,7 @@ var file_name := "untitled"
 var file_format : int = FileFormat.PNG
 enum FileFormat { PNG = 0, GIF = 1}
 
-# Store all settings after export, enables a quick re-export with same settings
 var was_exported : bool = false
-var exported_tab : int
-var exported_frame_number : int
-var exported_frame_current_tag : int
-var exported_orientation : int
-var exported_lines_count : int
-var exported_animation_type : int
-var exported_direction : int
-var exported_resize : int
-var exported_interpolation : int
-var exported_directory_path : String
-var exported_file_name : String
-var exported_file_format : int
 
 # Export coroutine signal
 var stop_export = false
@@ -64,21 +51,33 @@ var export_progress := 0.0
 onready var gif_export_thread := Thread.new()
 
 
-func _exit_tree():
+func _exit_tree() -> void:
 	if gif_export_thread.is_active():
 		gif_export_thread.wait_to_finish()
 
 
+func external_export() -> void:
+	match current_tab:
+		ExportTab.FRAME:
+			process_frame()
+		ExportTab.SPRITESHEET:
+			process_spritesheet()
+		ExportTab.ANIMATION:
+			process_animation()
+	export_processed_images(true, Global.export_dialog)
+
+
 func process_frame() -> void:
+	processed_images.clear()
 	var frame = Global.current_project.frames[frame_number - 1]
 	var image := Image.new()
 	image.create(Global.current_project.size.x, Global.current_project.size.y, false, Image.FORMAT_RGBA8)
 	blend_layers(image, frame)
-	processed_images.clear()
 	processed_images.append(image)
 
 
 func process_spritesheet() -> void:
+	processed_images.clear()
 	# Range of frames determined by tags
 	var frames := []
 	if frame_current_tag > 0:
@@ -100,7 +99,6 @@ func process_spritesheet() -> void:
 
 	var whole_image := Image.new()
 	whole_image.create(width, height, false, Image.FORMAT_RGBA8)
-	whole_image.lock()
 	var origin := Vector2.ZERO
 	var hh := 0
 	var vv := 0
@@ -126,7 +124,6 @@ func process_spritesheet() -> void:
 				origin.x = Global.current_project.size.x * vv
 		blend_layers(whole_image, frame, origin)
 
-	processed_images.clear()
 	processed_images.append(whole_image)
 
 
@@ -192,12 +189,14 @@ func export_processed_images(ignore_overwrites: bool, export_dialog: AcceptDialo
 			else:
 				var err = processed_images[i].save_png(export_paths[i])
 				if err != OK:
-					OS.alert("Can't save file")
+					Global.error_dialog.set_text(tr("File failed to save. Error code %s") % err)
+					Global.error_dialog.popup_centered()
+					Global.dialog_open(true)
 
 	# Store settings for quick export and when the dialog is opened again
 	was_exported = true
-	store_export_settings()
-	Global.file_menu.get_popup().set_item_text(5, tr("Export") + " %s" % (file_name + file_format_string(file_format)))
+	Global.current_project.was_exported = true
+	Global.top_menu_container.file_menu.set_item_text(6, tr("Export") + " %s" % (file_name + file_format_string(file_format)))
 
 	# Only show when not exporting gif - gif export finishes in thread
 	if not (current_tab == ExportTab.ANIMATION and animation_type == AnimationType.ANIMATED):
@@ -217,16 +216,16 @@ func export_gif(args: Dictionary) -> void:
 	match direction:
 		AnimationDirection.FORWARD:
 			for i in range(processed_images.size()):
-				write_frame_to_gif(processed_images[i], Global.animation_timer.wait_time, exporter, args["export_dialog"])
+				write_frame_to_gif(processed_images[i], Global.current_project.frames[i].duration * (1 / Global.current_project.fps), exporter, args["export_dialog"])
 		AnimationDirection.BACKWARDS:
 			for i in range(processed_images.size() - 1, -1, -1):
-				write_frame_to_gif(processed_images[i], Global.animation_timer.wait_time, exporter, args["export_dialog"])
+				write_frame_to_gif(processed_images[i], Global.current_project.frames[i].duration * (1 / Global.current_project.fps), exporter, args["export_dialog"])
 		AnimationDirection.PING_PONG:
 			export_progress_fraction = 100 / (processed_images.size() * 2)
 			for i in range(0, processed_images.size()):
-				write_frame_to_gif(processed_images[i], Global.animation_timer.wait_time, exporter, args["export_dialog"])
+				write_frame_to_gif(processed_images[i], Global.current_project.frames[i].duration * (1 / Global.current_project.fps), exporter, args["export_dialog"])
 			for i in range(processed_images.size() - 2, 0, -1):
-				write_frame_to_gif(processed_images[i], Global.animation_timer.wait_time, exporter, args["export_dialog"])
+				write_frame_to_gif(processed_images[i], Global.current_project.frames[i].duration * (1 / Global.current_project.fps), exporter, args["export_dialog"])
 
 	if OS.get_name() == "HTML5":
 		Html5FileExchange.save_gif(exporter.export_file_data(), args["export_paths"][0])
@@ -321,42 +320,11 @@ func blend_layers(image : Image, frame : Frame, origin : Vector2 = Vector2(0, 0)
 						var pixel_color := cel_image.get_pixel(xx, yy)
 						var alpha : float = pixel_color.a * cel.opacity
 						cel_image.set_pixel(xx, yy, Color(pixel_color.r, pixel_color.g, pixel_color.b, alpha))
-			image.blend_rect(cel_image, Rect2(Global.canvas.location, Global.current_project.size), origin)
+			image.blend_rect(cel_image, Rect2(Vector2.ZERO, Global.current_project.size), origin)
+			cel_image.unlock()
 		layer_i += 1
 	image.unlock()
 
 
 func frames_divided_by_spritesheet_lines() -> int:
 	return int(ceil(number_of_frames / float(lines_count)))
-
-
-func store_export_settings() -> void:
-	exported_tab = current_tab
-	exported_frame_number = frame_number
-	exported_frame_current_tag = frame_current_tag
-	exported_orientation = orientation
-	exported_lines_count = lines_count
-	exported_animation_type = animation_type
-	exported_direction = direction
-	exported_resize = resize
-	exported_interpolation = interpolation
-	exported_directory_path = directory_path
-	exported_file_name = file_name
-	exported_file_format = file_format
-
-
-# Fill the dialog with previous export settings
-func restore_previous_export_settings() -> void:
-	current_tab = exported_tab
-	frame_number = exported_frame_number if exported_frame_number <= Global.current_project.frames.size() else Global.current_project.frames.size()
-	frame_current_tag = exported_frame_current_tag if exported_frame_current_tag <= Global.current_project.animation_tags.size() else 0
-	orientation = exported_orientation
-	lines_count = exported_lines_count
-	animation_type = exported_animation_type
-	direction = exported_direction
-	resize = exported_resize
-	interpolation = exported_interpolation
-	directory_path = exported_directory_path
-	file_name = exported_file_name
-	file_format = exported_file_format
-

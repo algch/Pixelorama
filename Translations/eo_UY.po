@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-08-08 16:11\n"
+"PO-Revision-Date: 2021-04-16 18:10\n"
 
 msgid "OK"
 msgstr "Bone"
@@ -37,6 +37,9 @@ msgid "Canvas Size"
 msgstr ""
 
 msgid "Frame Size"
+msgstr ""
+
+msgid "Size"
 msgstr ""
 
 msgid "Width:"
@@ -114,6 +117,9 @@ msgstr "Refari"
 msgid "Copy"
 msgstr ""
 
+msgid "Cut"
+msgstr ""
+
 msgid "Paste"
 msgstr ""
 
@@ -123,10 +129,19 @@ msgstr "Forigi"
 msgid "Scale Image"
 msgstr "Skali bildon"
 
+msgid "Pixels"
+msgstr ""
+
+msgid "Percentage"
+msgstr ""
+
 msgid "Crop Image"
 msgstr "Tondi bildon"
 
 msgid "Resize Canvas"
+msgstr ""
+
+msgid "Centralize Image"
 msgstr ""
 
 msgid "Rotate Image"
@@ -150,8 +165,29 @@ msgstr "Agordoj"
 msgid "Tile Mode"
 msgstr "Kahela reĝimo"
 
+msgid "Window Transparency"
+msgstr ""
+
+msgid "Panel Layout"
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "Widescreen"
+msgstr ""
+
+msgid "Tallscreen"
+msgstr ""
+
+msgid "Mirror View"
+msgstr ""
+
 msgid "Show Grid"
 msgstr "Montri kradreton"
+
+msgid "Show Pixel Grid"
+msgstr ""
 
 msgid "Show Rulers"
 msgstr "Montri liniilojn"
@@ -183,13 +219,22 @@ msgstr ""
 msgid "Import as:"
 msgstr ""
 
+msgid "Recent projects"
+msgstr ""
+
 msgid "New tab"
 msgstr ""
 
 msgid "Spritesheet (new tab)"
 msgstr ""
 
+msgid "Spritesheet (new layer)"
+msgstr ""
+
 msgid "New frame"
+msgstr ""
+
+msgid "Replace frame"
 msgstr ""
 
 msgid "New layer"
@@ -208,6 +253,15 @@ msgid "Horizontal frames:"
 msgstr ""
 
 msgid "Vertical frames:"
+msgstr ""
+
+msgid "Start frame:"
+msgstr ""
+
+msgid "At frame:"
+msgstr ""
+
+msgid "At layer:"
 msgstr ""
 
 msgid "Brush type:"
@@ -359,6 +413,9 @@ msgstr ""
 msgid "Language"
 msgstr "Lingvo"
 
+msgid "Interface"
+msgstr ""
+
 msgid "Themes"
 msgstr "Temoj"
 
@@ -369,6 +426,9 @@ msgid "Shortcuts"
 msgstr ""
 
 msgid "Backup"
+msgstr ""
+
+msgid "Performance"
 msgstr ""
 
 msgid "Indicators"
@@ -404,6 +464,12 @@ msgstr "Koloro de direktlinioj:"
 msgid "System Language"
 msgstr "Sistema lingvo"
 
+msgid "Display Scale"
+msgstr ""
+
+msgid "Dim interface on dialog popup"
+msgstr ""
+
 msgid "Dark"
 msgstr "Malhela"
 
@@ -418,6 +484,9 @@ msgstr "Karamela"
 
 msgid "Light"
 msgstr "Hela"
+
+msgid "Purple"
+msgstr ""
 
 msgid "Only affect selection"
 msgstr ""
@@ -470,14 +539,14 @@ msgstr "Tipo:"
 msgid "Angle:"
 msgstr "Angulo:"
 
-msgid "Hue"
-msgstr "Nuanco"
+msgid "Hue:"
+msgstr ""
 
-msgid "Saturation"
-msgstr "Satureco"
+msgid "Saturation:"
+msgstr ""
 
-msgid "Value"
-msgstr "Valoro"
+msgid "Value:"
+msgstr ""
 
 msgid "Apply"
 msgstr "Apliki"
@@ -524,11 +593,20 @@ msgstr "Ŝanĝprotokolo"
 msgid "About Pixelorama"
 msgstr "Pri Pixelorama"
 
+msgid "Pixelorama - Pixelate your dreams!"
+msgstr ""
+
 msgid "Developed by Orama Interactive"
 msgstr "Ellaborita de Orama Interactive"
 
+msgid "©2019-present by Orama Interactive and contributors"
+msgstr ""
+
 msgid "Website"
 msgstr "Retejo"
+
+msgid "GitHub Repo"
+msgstr ""
 
 msgid "Donate"
 msgstr "Donaci"
@@ -581,6 +659,9 @@ msgstr "Latva"
 msgid "Spanish"
 msgstr "Hispana"
 
+msgid "Catalan"
+msgstr ""
+
 msgid "Esperanto"
 msgstr ""
 
@@ -605,6 +686,12 @@ msgstr ""
 msgid "Hungarian"
 msgstr ""
 
+msgid "Romanian"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
 msgid "Development Team"
 msgstr "Teamo de ellaboro"
 
@@ -617,8 +704,8 @@ msgstr "UIa desegnilo"
 msgid "GitHub Contributors"
 msgstr "Kontribuantoj de GitHub"
 
-msgid "Art by"
-msgstr "Bildverko de"
+msgid "Art by: %s"
+msgstr ""
 
 msgid "untitled"
 msgstr "sennoma"
@@ -664,6 +751,11 @@ msgid "Zoom\n\n"
 "%s for right mouse button"
 msgstr ""
 
+msgid "Pan\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr ""
+
 msgid "Color Picker\n"
 "Select a color from a pixel of the sprite\n\n"
 "%s for left mouse button\n"
@@ -693,6 +785,26 @@ msgstr ""
 msgid "Lighten/Darken\n\n"
 "%s for left mouse button\n"
 "%s for right mouse button"
+msgstr ""
+
+msgid "Rectangle Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr ""
+
+msgid "Ellipse Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr ""
+
+msgid "Rectangle"
+msgstr ""
+
+msgid "Ellipse"
 msgstr ""
 
 msgid "Choose a color for the left tool"
@@ -750,22 +862,82 @@ msgstr ""
 msgid "Grid"
 msgstr ""
 
-msgid "Grid width:"
+msgid "Grid type:"
 msgstr ""
 
-msgid "Sets how far apart are vertical lines of the grid"
+msgid "Sets the type of the grid between rectangular, isometric or both"
 msgstr ""
 
-msgid "Grid height:"
+msgid "Rectangular"
 msgstr ""
 
-msgid "Sets how far apart are horizontal lines of the grid"
+msgid "Isometric"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Rectangular grid width:"
+msgstr ""
+
+msgid "Sets how far apart are vertical lines of the rectangular grid"
+msgstr ""
+
+msgid "Rectangular grid height:"
+msgstr ""
+
+msgid "Sets how far apart are horizontal lines of the rectangular grid"
+msgstr ""
+
+msgid "Isometric cell bounds width:"
+msgstr ""
+
+msgid "Sets the width of the isometric cell's axis aligned bounding box"
+msgstr ""
+
+msgid "Isometric cell bounds height:"
+msgstr ""
+
+msgid "Sets the height of the isometric cell's axis aligned bounding box"
+msgstr ""
+
+msgid "Grid offset x:"
+msgstr ""
+
+msgid "Sets grid's x offset from the canvas origin (top left corner of the image)"
+msgstr ""
+
+msgid "Grid offset y:"
+msgstr ""
+
+msgid "Sets grid's y offset from the canvas origin (top left corner of the image)"
+msgstr ""
+
+msgid "Draw over Tile Mode:"
+msgstr ""
+
+msgid "If disabled, the grid will be drawn only over the original image"
 msgstr ""
 
 msgid "Grid color:"
 msgstr ""
 
 msgid "A color of the grid"
+msgstr ""
+
+msgid "Pixel Grid"
+msgstr ""
+
+msgid "Show at zoom:"
+msgstr ""
+
+msgid "Sets the minimal zoom at which pixel grid will be shown"
+msgstr ""
+
+msgid "Pixel grid color:"
+msgstr ""
+
+msgid "A color of the pixel grid"
 msgstr ""
 
 msgid "Transparency"
@@ -789,7 +961,31 @@ msgstr ""
 msgid "Second color of the transparent checker background"
 msgstr ""
 
+msgid "Follow Canvas Movement"
+msgstr ""
+
+msgid "The transparent checker follow the movement of canvas"
+msgstr ""
+
+msgid "Follow Canvas Zoom Level"
+msgstr ""
+
+msgid "The transparent checker follow the zoom level of canvas"
+msgstr ""
+
 msgid "Only custom preset can be modified"
+msgstr ""
+
+msgid "Set application FPS limit:"
+msgstr ""
+
+msgid "Limit FPS to 1 when app loses focus"
+msgstr ""
+
+msgid "Sets the limit of the application's frames per second. The lower the number, the lower the CPU usage, but the application gets slower, choppier and unresponsive. 0 means that there is no limit."
+msgstr ""
+
+msgid "If this is toggled on, when the application's window loses focus, the FPS limit of the application is set to 1. This helps lower CPU usage when idle. The FPS limit is being reset when the mouse enters the application's window."
 msgstr ""
 
 msgid "Brush:"
@@ -798,14 +994,14 @@ msgstr "Peniko:"
 msgid "Select a brush"
 msgstr ""
 
-msgid "Brush: Pixel"
-msgstr "Peniko: Rastrumero"
+msgid "Pixel brush"
+msgstr ""
 
-msgid "Brush: Circle"
-msgstr "Peniklo: Cirklo"
+msgid "Circle brush"
+msgstr ""
 
-msgid "Brush: Filled Circle"
-msgstr "Peniklo: Plenigita circklo"
+msgid "Filled circle brush"
+msgstr ""
 
 msgid "Custom brush"
 msgstr "Propra peniklo"
@@ -813,10 +1009,22 @@ msgstr "Propra peniklo"
 msgid "Brush size:"
 msgstr ""
 
-msgid "Overwrite"
+msgid "Overwrite Color"
+msgstr ""
+
+msgid "Overwrites color instead of blending it. This option is only relevant with colors that are not fully opaque"
 msgstr ""
 
 msgid "Pixel Perfect"
+msgstr ""
+
+msgid "Makes lines smooth by removing the extra pixels on the edges"
+msgstr ""
+
+msgid "Fill Shape"
+msgstr ""
+
+msgid "Fills the drawn shape with color, instead of drawing a hollow shape"
 msgstr ""
 
 msgid "Brush color from"
@@ -844,6 +1052,12 @@ msgid "Pattern"
 msgstr "Ŝablono"
 
 msgid "Offset"
+msgstr ""
+
+msgid "Simple Shading"
+msgstr ""
+
+msgid "Hue Shifting"
 msgstr ""
 
 msgid "Lighten"
@@ -958,7 +1172,28 @@ msgstr "Estontaj kadroj"
 msgid "Manage frame tags"
 msgstr ""
 
+msgid "Frame Tag Properties"
+msgstr ""
+
+msgid "Add a new frame tag"
+msgstr ""
+
+msgid "Name:"
+msgstr ""
+
+msgid "From:"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
 msgid "Animation plays only on frames of the same tag"
+msgstr ""
+
+msgid "Tag %s (Frame %s)"
+msgstr ""
+
+msgid "Tag %s (Frames %s-%s)"
 msgstr ""
 
 msgid "If it's selected, the animation plays only on the frames that have the same tag.\n"
@@ -992,6 +1227,12 @@ msgstr ""
 msgid "Unlink Cel"
 msgstr ""
 
+msgid "Frame Properties"
+msgstr ""
+
+msgid "Frame properties"
+msgstr ""
+
 msgid "Layer"
 msgstr "Tavolo"
 
@@ -1019,11 +1260,17 @@ msgstr ""
 msgid "Opacity:"
 msgstr "Opakeco:"
 
+msgid "Tile mode opacity:"
+msgstr ""
+
 msgid "Toggle layer's visibility"
 msgstr ""
 
 msgid "Lock/unlock layer"
 msgstr "Fiksi/malfiksi tavolon"
+
+msgid "Frame: %s, Layer: %s"
+msgstr ""
 
 msgid "Enable/disable cel linking\n\n"
 "Linked cels are being shared across multiple frames"
@@ -1122,6 +1369,12 @@ msgstr ""
 msgid "Redo: Delete Frame Tag"
 msgstr ""
 
+msgid "Undo: Change frame duration"
+msgstr ""
+
+msgid "Redo: Change frame duration"
+msgstr ""
+
 msgid "Move Guide"
 msgstr "Movi direktlinion"
 
@@ -1131,11 +1384,11 @@ msgstr "Dosiero konservitas"
 msgid "File autosaved"
 msgstr ""
 
-msgid "File failed to open"
-msgstr "Dosiero ne sukcesis malfermiĝi"
+msgid "File failed to open. Error code %s"
+msgstr ""
 
-msgid "File failed to save"
-msgstr "Dosiero ne sukcesis konservi"
+msgid "File failed to save. Error code %s"
+msgstr ""
 
 msgid "File exported"
 msgstr "Dosiero elportitas"
@@ -1161,6 +1414,9 @@ msgstr ""
 msgid "Create a new empty palette?"
 msgstr "Ĉu krei novan malplenan paletron?"
 
+msgid "Error"
+msgstr ""
+
 msgid "Error: Palette must have a valid name."
 msgstr "Eraro: Paletro devas havi veran nomon."
 
@@ -1169,6 +1425,15 @@ msgstr "Malvera dosiero de paletro!"
 
 msgid "Edit Palette"
 msgstr "Redakti paletron"
+
+msgid "Create colors with alpha component"
+msgstr ""
+
+msgid "Get colors only from selection"
+msgstr ""
+
+msgid "Get colors from"
+msgstr ""
 
 msgid "Patrons:"
 msgstr "Patronoj:"
@@ -1209,7 +1474,13 @@ msgstr "Defaŭlta plenigkoloro:"
 msgid "A default background color of a new image"
 msgstr "Defaŭlta fona koloro de nova bildo"
 
-msgid "Lock aspect ratio:"
+msgid "Lock aspect ratio"
+msgstr ""
+
+msgid "Portrait"
+msgstr ""
+
+msgid "Landscape"
 msgstr ""
 
 msgid "Templates:"
@@ -1231,6 +1502,9 @@ msgid "Rectangular Selection"
 msgstr ""
 
 msgid "Zoom"
+msgstr ""
+
+msgid "Pan"
 msgstr ""
 
 msgid "Color Picker"
@@ -1274,6 +1548,9 @@ msgstr "Ilo, asignita al la musa dekstra butono"
 
 msgid "Cannot find last project file."
 msgstr "Ne povas trovi dosieron de la lasta projekto."
+
+msgid "Cannot find project file."
+msgstr ""
 
 msgid "You haven't saved or opened any project in Pixelorama yet!"
 msgstr "Vi ankoraŭ ne konservis aŭ malfermis iun ajn projekton en Pixelorama!"
@@ -1321,6 +1598,9 @@ msgstr ""
 msgid "Remove currently selected palette"
 msgstr ""
 
+msgid "Are you sure you want to remove this palette? (Cannot be undone)"
+msgstr ""
+
 msgid "You can't remove more palettes!"
 msgstr "Vi ne povas forigi pli da paletroj!"
 
@@ -1329,4 +1609,61 @@ msgstr "Ne povas forigi la paletron, ĉar ĝi ne ekzistas!"
 
 msgid "An error occured while removing the palette! Error code: %s"
 msgstr "Eraro okazis dum la paletra forigado! Kodo de eraro: %s"
+
+msgid "and"
+msgstr ""
+
+msgid "Move the selected frame to the left."
+msgstr ""
+
+msgid "Move the selected frame to the right."
+msgstr ""
+
+msgid "Frame duration"
+msgstr ""
+
+msgid "Tiled In Both Axis"
+msgstr ""
+
+msgid "Tiled In X Axis"
+msgstr ""
+
+msgid "Tiled In Y Axis"
+msgstr ""
+
+msgid "Create a new palette"
+msgstr ""
+
+msgid "Create New Palette"
+msgstr ""
+
+msgid "Comment:"
+msgstr ""
+
+msgid "Empty"
+msgstr ""
+
+msgid "From Current Palette"
+msgstr ""
+
+msgid "From Current Sprite"
+msgstr ""
+
+msgid "From Current Selection"
+msgstr ""
+
+msgid "Add a new color"
+msgstr ""
+
+msgid "Remove a selected color"
+msgstr ""
+
+msgid "Palette with the same name and path already exists!"
+msgstr ""
+
+msgid "Palette name is required!"
+msgstr ""
+
+msgid "Reducing palette size will reset positions of colors. Colors that don't fit in new palette size will be lost!"
+msgstr ""
 

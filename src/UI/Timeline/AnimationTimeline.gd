@@ -1,20 +1,35 @@
 extends Panel
 
-var fps := 6.0
 var animation_loop := 1 # 0 is no loop, 1 is cycle loop, 2 is ping-pong loop
 var animation_forward := true
 var first_frame := 0
 var last_frame := 0
+var is_mouse_hover := false
+var cel_size := 36 setget cel_size_changed
+var min_cel_size := 36
+var max_cel_size := 144
 
 var timeline_scroll : ScrollContainer
 var tag_scroll_container : ScrollContainer
+var fps_spinbox : SpinBox
 
 
 func _ready() -> void:
 	timeline_scroll = Global.find_node_by_name(self, "TimelineScroll")
 	tag_scroll_container = Global.find_node_by_name(self, "TagScroll")
+	fps_spinbox = find_node("FPSValue")
 	timeline_scroll.get_h_scrollbar().connect("value_changed", self, "_h_scroll_changed")
-	Global.animation_timer.wait_time = 1 / fps
+	yield(get_tree(), "idle_frame")
+	Global.animation_timer.wait_time = 1 / Global.current_project.fps
+	fps_spinbox.value = Global.current_project.fps
+
+
+func _input(event : InputEvent) -> void:
+	var mouse_pos := get_global_mouse_position()
+	var timeline_rect := Rect2(rect_global_position, rect_size)
+	if timeline_rect.has_point(mouse_pos):
+		if Input.is_key_pressed(KEY_CONTROL):
+			self.cel_size += (2 * int(event.is_action("zoom_in")) - 2 * int(event.is_action("zoom_out")))
 
 
 func _h_scroll_changed(value : float) -> void:
@@ -23,11 +38,38 @@ func _h_scroll_changed(value : float) -> void:
 	tag_scroll_container.scroll_horizontal = value
 
 
+func cel_size_changed(value : int) -> void:
+	cel_size = clamp(value, min_cel_size, max_cel_size)
+	for layer_button in Global.layers_container.get_children():
+		layer_button.rect_min_size.y = cel_size
+		layer_button.rect_size.y = cel_size
+	for layer in Global.current_project.layers:
+		for cel_button in layer.frame_container.get_children():
+			cel_button.rect_min_size.x = cel_size
+			cel_button.rect_min_size.y = cel_size
+			cel_button.rect_size.x = cel_size
+			cel_button.rect_size.y = cel_size
+
+	for frame_id in Global.frame_ids.get_children():
+		frame_id.rect_min_size.x = cel_size
+		frame_id.rect_size.x = cel_size
+
+	for tag_c in Global.tag_container.get_children():
+		var tag_base_size = cel_size + 3
+		var tag : AnimationTag = tag_c.tag
+		tag_c.rect_position.x = (tag.from - 1) * tag_base_size + tag.from
+		var tag_size : int = tag.to - tag.from
+		tag_c.rect_min_size.x = (tag_size + 1) * tag_base_size
+		tag_c.rect_size.x = (tag_size + 1) * tag_base_size
+		tag_c.get_node("Line2D").points[2] = Vector2(tag_c.rect_min_size.x, 0)
+		tag_c.get_node("Line2D").points[3] = Vector2(tag_c.rect_min_size.x, 32)
+
+
 func add_frame() -> void:
 	var frame : Frame = Global.canvas.new_empty_frame()
 	var new_frames : Array = Global.current_project.frames.duplicate()
-	new_frames.append(frame)
 	var new_layers : Array = Global.current_project.layers.duplicate()
+	new_frames.insert(Global.current_project.current_frame + 1, frame)
 	# Loop through the array to create new classes for each element, so that they
 	# won't be the same as the original array's classes. Needed for undo/redo to work properly.
 	for i in new_layers.size():
@@ -46,11 +88,11 @@ func add_frame() -> void:
 	Global.current_project.undo_redo.add_undo_method(Global, "undo")
 
 	Global.current_project.undo_redo.add_do_property(Global.current_project, "frames", new_frames)
-	Global.current_project.undo_redo.add_do_property(Global.current_project, "current_frame", new_frames.size() - 1)
+	Global.current_project.undo_redo.add_do_property(Global.current_project, "current_frame", Global.current_project.current_frame + 1)
 	Global.current_project.undo_redo.add_do_property(Global.current_project, "layers", new_layers)
 
 	Global.current_project.undo_redo.add_undo_property(Global.current_project, "frames", Global.current_project.frames)
-	Global.current_project.undo_redo.add_undo_property(Global.current_project, "current_frame", Global.current_project.current_frame)
+	Global.current_project.undo_redo.add_undo_property(Global.current_project, "current_frame", Global.current_project.current_frame )
 	Global.current_project.undo_redo.add_undo_property(Global.current_project, "layers", Global.current_project.layers)
 	Global.current_project.undo_redo.commit_action()
 
@@ -123,7 +165,6 @@ func _on_CopyFrame_pressed(frame := -1) -> void:
 		frame = Global.current_project.current_frame
 
 	var new_frame := Frame.new()
-
 	var new_frames := Global.current_project.frames.duplicate()
 	new_frames.insert(frame + 1, new_frame)
 
@@ -165,6 +206,20 @@ func _on_CopyFrame_pressed(frame := -1) -> void:
 
 func _on_FrameTagButton_pressed() -> void:
 	Global.tag_dialog.popup_centered()
+
+
+func _on_MoveLeft_pressed() -> void:
+	var frame : int = Global.current_project.current_frame
+	if frame == 0:
+		return
+	Global.current_project.layers[Global.current_project.current_layer].frame_container.get_child(frame).change_frame_order(-1)
+
+
+func _on_MoveRight_pressed() -> void:
+	var frame : int = Global.current_project.current_frame
+	if frame == last_frame:
+		return
+	Global.current_project.layers[Global.current_project.current_layer].frame_container.get_child(frame).change_frame_order(1)
 
 
 func _on_OnionSkinning_pressed() -> void:
@@ -221,9 +276,12 @@ func _on_AnimationTimer_timeout() -> void:
 		$AnimationTimer.stop()
 		return
 
+	var fps = Global.current_project.fps
 	if animation_forward:
 		if Global.current_project.current_frame < last_frame:
 			Global.current_project.current_frame += 1
+			Global.animation_timer.wait_time = Global.current_project.frames[Global.current_project.current_frame].duration * (1/fps)
+			Global.animation_timer.start() # Change the frame, change the wait time and start a cycle, this is the best way to do it
 		else:
 			match animation_loop:
 				0: # No loop
@@ -232,6 +290,8 @@ func _on_AnimationTimer_timeout() -> void:
 					Global.animation_timer.stop()
 				1: # Cycle loop
 					Global.current_project.current_frame = first_frame
+					Global.animation_timer.wait_time = Global.current_project.frames[Global.current_project.current_frame].duration * (1/fps)
+					Global.animation_timer.start()
 				2: # Ping pong loop
 					animation_forward = false
 					_on_AnimationTimer_timeout()
@@ -239,6 +299,8 @@ func _on_AnimationTimer_timeout() -> void:
 	else:
 		if Global.current_project.current_frame > first_frame:
 			Global.current_project.current_frame -= 1
+			Global.animation_timer.wait_time = Global.current_project.frames[Global.current_project.current_frame].duration * (1/fps)
+			Global.animation_timer.start()
 		else:
 			match animation_loop:
 				0: # No loop
@@ -247,6 +309,8 @@ func _on_AnimationTimer_timeout() -> void:
 					Global.animation_timer.stop()
 				1: # Cycle loop
 					Global.current_project.current_frame = last_frame
+					Global.animation_timer.wait_time = Global.current_project.frames[Global.current_project.current_frame].duration * (1/fps)
+					Global.animation_timer.start()
 				2: # Ping pong loop
 					animation_forward = true
 					_on_AnimationTimer_timeout()
@@ -280,7 +344,10 @@ func play_animation(play : bool, forward_dir : bool) -> void:
 		Global.play_forward.connect("toggled", self, "_on_PlayForward_toggled")
 
 	if play:
-		Global.animation_timer.wait_time = 1 / fps
+		Global.animation_timer.set_one_shot(true) # The wait_time can't change correctly if it is playing
+		var duration : float = Global.current_project.frames[Global.current_project.current_frame].duration
+		var fps = Global.current_project.fps
+		Global.animation_timer.wait_time = duration * (1 / fps)
 		Global.animation_timer.start()
 		animation_forward = forward_dir
 	else:
@@ -306,8 +373,8 @@ func _on_FirstFrame_pressed() -> void:
 
 
 func _on_FPSValue_value_changed(value : float) -> void:
-	fps = float(value)
-	Global.animation_timer.wait_time = 1 / fps
+	Global.current_project.fps = float(value)
+	Global.animation_timer.wait_time = 1 / Global.current_project.fps
 
 
 func _on_PastOnionSkinning_value_changed(value : float) -> void:
@@ -351,7 +418,7 @@ func add_layer(is_new := true) -> void:
 		Global.current_project.undo_redo.add_do_property(f, "cels", new_cels)
 		Global.current_project.undo_redo.add_undo_property(f, "cels", f.cels)
 
-	Global.current_project.undo_redo.add_do_property(Global.current_project, "current_layer", Global.current_project.current_layer + 1)
+	Global.current_project.undo_redo.add_do_property(Global.current_project, "current_layer", Global.current_project.layers.size())
 	Global.current_project.undo_redo.add_do_property(Global.current_project, "layers", new_layers)
 	Global.current_project.undo_redo.add_undo_property(Global.current_project, "current_layer", Global.current_project.current_layer)
 	Global.current_project.undo_redo.add_undo_property(Global.current_project, "layers", Global.current_project.layers)
@@ -441,7 +508,7 @@ func _on_MergeDownLayer_pressed() -> void:
 		var new_layer := Image.new()
 		new_layer.copy_from(f.cels[Global.current_project.current_layer - 1].image)
 		new_layer.lock()
-		new_layer.blend_rect(selected_layer, Rect2(Global.canvas.location, Global.current_project.size), Vector2.ZERO)
+		new_layer.blend_rect(selected_layer, Rect2(Vector2.ZERO, Global.current_project.size), Vector2.ZERO)
 		new_cels.remove(Global.current_project.current_layer)
 		if !selected_layer.is_invisible() and Global.current_project.layers[Global.current_project.current_layer - 1].linked_cels.size() > 1 and (f in Global.current_project.layers[Global.current_project.current_layer - 1].linked_cels):
 			new_layers[Global.current_project.current_layer - 1].linked_cels.erase(f)

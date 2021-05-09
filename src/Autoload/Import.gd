@@ -68,7 +68,7 @@ func get_brush_files_from_directory(directory: String): # -> Array
 			# and png one at that nya
 			if !the_directory.current_is_dir() and curr_file.get_extension().to_lower() == "png":
 				# if we are a random element, add
-				if "%" in curr_file:
+				if "~" in curr_file:
 					randomised_files.append(curr_file)
 				else:
 					non_randomised_files.append(curr_file)
@@ -223,74 +223,3 @@ func import_patterns(priority_ordered_search_path: Array) -> void:
 				image.convert(Image.FORMAT_RGBA8)
 				var tooltip_name = pattern.get_basename()
 				Global.patterns_popup.add(image, tooltip_name)
-
-
-func import_gpl(path : String, text : String) -> Palette:
-	# Refer to app/core/gimppalette-load.c of the GIMP for the "living spec"
-	var result : Palette = null
-	var lines = text.split('\n')
-	var line_number := 0
-	var comments := ""
-	for line in lines:
-		# Check if valid Gimp Palette Library file
-		if line_number == 0:
-			if not "GIMP Palette" in line:
-				break
-			else:
-				result = Palette.new()
-				# Use filename as palette name in case reading old
-				# palette format (must read more to determine)
-				result.name = path.get_basename().get_file()
-
-		# Comments
-		if line.begins_with('#'):
-			comments += line.trim_prefix('#') + '\n'
-			# Some programs output palette name in a comment for old format
-			if line.begins_with("#Palette Name: "):
-				result.name = line.replace("#Palette Name: ", "")
-			pass
-		elif line.begins_with("Name: "):
-			result.name = line.replace("Name: ", "")
-			pass
-		elif line.begins_with("Columns: "):
-			# Number of colors in this palette. Unecessary and often wrong
-			pass
-		elif line_number > 0 && line.length() >= 9:
-			line = line.replace("\t", " ")
-			var color_data : PoolStringArray = line.split(" ", false, 4)
-			var red : float = color_data[0].to_float() / 255.0
-			var green : float = color_data[1].to_float() / 255.0
-			var blue : float = color_data[2].to_float() / 255.0
-			var color = Color(red, green, blue)
-			if color_data.size() >= 4:
-				result.add_color(color, color_data[3])
-			else:
-				result.add_color(color)
-		line_number += 1
-
-	if result:
-		result.comments = comments
-
-	return result
-
-
-func import_png_palette(path: String, image : Image) -> Palette:
-	var result: Palette = null
-
-	var height: int = image.get_height()
-	var width: int = image.get_width()
-
-	result = Palette.new()
-
-	# Iterate all pixels and store unique colors to palete
-	image.lock()
-	for y in range(0, height):
-		for x in range(0, width):
-			var color: Color = image.get_pixel(x, y)
-			if not result.has_color(color):
-				result.add_color(color, "#" + color.to_html())
-	image.unlock()
-
-	result.name = path.get_basename().get_file()
-
-	return result

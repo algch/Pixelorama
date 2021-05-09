@@ -3,6 +3,8 @@ extends AcceptDialog
 # Preferences table: [Prop name in Global, relative node path, value type, default value]
 var preferences = [
 	["open_last_project", "Startup/StartupContainer/OpenLastProject", "pressed", Global.open_last_project],
+	["shrink", "Interface/ShrinkContainer/ShrinkHSlider", "value", Global.shrink],
+	["dim_on_popup", "Interface/DimPopup/CheckBox", "pressed", Global.dim_on_popup],
 	["smooth_zoom", "Canvas/ZoomOptions/SmoothZoom", "pressed", Global.smooth_zoom],
 	["pressure_sensitivity_mode", "Startup/PressureSentivity/PressureSensitivityOptionButton", "selected", Global.pressure_sensitivity_mode],
 	["show_left_tool_icon", "Indicators/IndicatorsContainer/LeftToolIconCheckbox", "pressed", Global.show_left_tool_icon],
@@ -19,14 +21,24 @@ var preferences = [
 	["grid_type", "Canvas/GridOptions/GridType", "selected", Global.grid_type],
 	["grid_width", "Canvas/GridOptions/GridWidthValue", "value", Global.grid_width],
 	["grid_height", "Canvas/GridOptions/GridHeightValue", "value", Global.grid_height],
-	["grid_isometric_cell_size", "Canvas/GridOptions/IsometricCellSizeValue", "value", Global.grid_isometric_cell_size],
+	["grid_isometric_cell_bounds_width", "Canvas/GridOptions/IsometricCellBoundsWidthValue", "value", Global.grid_isometric_cell_bounds_width],
+	["grid_isometric_cell_bounds_height", "Canvas/GridOptions/IsometricCellBoundsHeightValue", "value", Global.grid_isometric_cell_bounds_height],
+	["grid_offset_x", "Canvas/GridOptions/GridOffsetXValue", "value", Global.grid_offset_x],
+	["grid_offset_y", "Canvas/GridOptions/GridOffsetYValue", "value", Global.grid_offset_y],
+	["grid_draw_over_tile_mode", "Canvas/GridOptions/GridDrawOverTileMode", "pressed", Global.grid_draw_over_tile_mode],
 	["grid_color", "Canvas/GridOptions/GridColor", "color", Global.grid_color],
+	["pixel_grid_show_at_zoom", "Canvas/PixelGridOptions/ShowAtZoom", "value", Global.pixel_grid_show_at_zoom],
+	["pixel_grid_color", "Canvas/PixelGridOptions/GridColor", "color", Global.pixel_grid_color],
 	["guide_color", "Canvas/GuideOptions/GuideColor", "color", Global.guide_color],
 	["checker_size", "Canvas/CheckerOptions/CheckerSizeValue", "value", Global.checker_size],
 	["checker_color_1", "Canvas/CheckerOptions/CheckerColor1", "color", Global.checker_color_1],
 	["checker_color_2", "Canvas/CheckerOptions/CheckerColor2", "color", Global.checker_color_2],
 	["checker_follow_movement", "Canvas/CheckerOptions/CheckerFollowMovement", "pressed", Global.checker_follow_movement],
 	["checker_follow_scale", "Canvas/CheckerOptions/CheckerFollowScale", "pressed", Global.checker_follow_scale],
+	["tilemode_opacity", "Canvas/CheckerOptions/TileModeOpacity", "value", Global.tilemode_opacity],
+
+	["fps_limit", "Performance/PerformanceContainer/SetFPSLimit", "value", Global.fps_limit],
+	["fps_limit_focus", "Performance/PerformanceContainer/EnableLimitFPSFocus", "pressed", Global.fps_limit_focus],
 ]
 
 var selected_item := 0
@@ -35,6 +47,7 @@ onready var list : ItemList = $HSplitContainer/List
 onready var right_side : VBoxContainer = $HSplitContainer/ScrollContainer/VBoxContainer
 onready var autosave_interval : SpinBox = $HSplitContainer/ScrollContainer/VBoxContainer/Backup/AutosaveContainer/AutosaveInterval
 onready var restore_default_button_scene = preload("res://src/Preferences/RestoreDefaultButton.tscn")
+onready var shrink_label : Label = $HSplitContainer/ScrollContainer/VBoxContainer/Interface/ShrinkContainer/ShrinkLabel
 
 
 func _ready() -> void:
@@ -120,9 +133,11 @@ func preference_update(prop : String) -> void:
 		else:
 			autosave_interval.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 
-	if prop in ["grid_type", "grid_width", "grid_height", "grid_isometric_cell_size", "grid_color"]:
-		Global.canvas.grid.isometric_polylines.clear()
+	if prop in ["grid_type", "grid_width", "grid_height", "grid_isometric_cell_bounds_width", "grid_isometric_cell_bounds_height", "grid_offset_x", "grid_offset_y", "grid_draw_over_tile_mode", "grid_color"]:
 		Global.canvas.grid.update()
+
+	if prop in ["pixel_grid_show_at_zoom", "pixel_grid_color"]:
+		Global.canvas.pixel_grid.update()
 
 	if prop in ["checker_size", "checker_color_1", "checker_color_2", "checker_follow_movement", "checker_follow_scale"]:
 		Global.transparent_checker._ready()
@@ -131,6 +146,9 @@ func preference_update(prop : String) -> void:
 		for guide in Global.canvas.get_children():
 			if guide is Guide:
 				guide.default_color = Global.guide_color
+
+	if prop in ["fps_limit"]:
+		Engine.set_target_fps(Global.fps_limit)
 
 	Global.config_cache.save("user://cache.ini")
 
@@ -149,11 +167,12 @@ func _on_PreferencesDialog_about_to_show(changed_language := false) -> void:
 	if OS.get_name() != "HTML5":
 		list.add_item("  " + tr("Startup"))
 	list.add_item("  " + tr("Language"))
-	list.add_item("  " + tr("Themes"))
+	list.add_item("  " + tr("Interface"))
 	list.add_item("  " + tr("Canvas"))
 	list.add_item("  " + tr("Image"))
 	list.add_item("  " + tr("Shortcuts"))
 	list.add_item("  " + tr("Backup"))
+	list.add_item("  " + tr("Performance"))
 	list.add_item("  " + tr("Indicators"))
 
 	list.select(1 if changed_language else selected_item)
@@ -167,7 +186,21 @@ func _on_PreferencesDialog_popup_hide() -> void:
 func _on_List_item_selected(index : int) -> void:
 	selected_item = index
 	for child in right_side.get_children():
-		var content_list = ["Startup", "Languages", "Themes", "Canvas", "Image", "Shortcuts", "Backup", "Indicators"]
+		var content_list = ["Startup", "Languages", "Interface", "Canvas", "Image", "Shortcuts", "Backup", "Performance", "Indicators"]
 		if OS.get_name() == "HTML5":
 			content_list.erase("Startup")
 		child.visible = child.name == content_list[index]
+
+
+func _on_ShrinkHSlider_value_changed(value : float) -> void:
+	shrink_label.text = str(value)
+
+
+func _on_ShrinkApplyButton_pressed() -> void:
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED,
+		SceneTree.STRETCH_ASPECT_IGNORE, Vector2(1024,576), Global.shrink)
+	hide()
+	popup_centered(Vector2(400, 280))
+	Global.dialog_open(true)
+	yield(Global.get_tree().create_timer(0.01), "timeout")
+	Global.camera.fit_to_frame(Global.current_project.size)

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2020-08-08 17:00\n"
+"PO-Revision-Date: 2021-04-17 00:39\n"
 
 msgid "OK"
 msgstr "确定"
@@ -38,6 +38,9 @@ msgstr "画布尺寸"
 
 msgid "Frame Size"
 msgstr "帧大小"
+
+msgid "Size"
+msgstr "大小"
 
 msgid "Width:"
 msgstr "宽度:"
@@ -114,6 +117,9 @@ msgstr "重做"
 msgid "Copy"
 msgstr "复制"
 
+msgid "Cut"
+msgstr "剪切"
+
 msgid "Paste"
 msgstr "粘贴"
 
@@ -123,11 +129,20 @@ msgstr "删除"
 msgid "Scale Image"
 msgstr "缩放图像"
 
+msgid "Pixels"
+msgstr "像素"
+
+msgid "Percentage"
+msgstr "百分比"
+
 msgid "Crop Image"
 msgstr "裁剪图像"
 
 msgid "Resize Canvas"
 msgstr "调整画布尺寸"
+
+msgid "Centralize Image"
+msgstr "集成图像"
 
 msgid "Rotate Image"
 msgstr "旋转图像"
@@ -150,14 +165,35 @@ msgstr "首选项"
 msgid "Tile Mode"
 msgstr "平铺模式"
 
+msgid "Window Transparency"
+msgstr "窗口透明"
+
+msgid "Panel Layout"
+msgstr "面板布局"
+
+msgid "Auto"
+msgstr "自动"
+
+msgid "Widescreen"
+msgstr "宽屏"
+
+msgid "Tallscreen"
+msgstr "高屏"
+
+msgid "Mirror View"
+msgstr "镜像视图"
+
 msgid "Show Grid"
 msgstr "显示网格"
+
+msgid "Show Pixel Grid"
+msgstr "显示像素网格"
 
 msgid "Show Rulers"
 msgstr "显示标尺"
 
 msgid "Show Guides"
-msgstr "显示指南"
+msgstr "显示参考线"
 
 msgid "Show Animation Timeline"
 msgstr "显示动画时间轴"
@@ -183,14 +219,23 @@ msgstr "导入选项"
 msgid "Import as:"
 msgstr "导入为："
 
+msgid "Recent projects"
+msgstr "最近项目"
+
 msgid "New tab"
 msgstr "新建选项卡"
 
 msgid "Spritesheet (new tab)"
 msgstr "纸张（新建选项卡）"
 
+msgid "Spritesheet (new layer)"
+msgstr "纸张（新建图层）"
+
 msgid "New frame"
 msgstr "新建帧"
+
+msgid "Replace frame"
+msgstr "替换帧"
 
 msgid "New layer"
 msgstr "新建图层"
@@ -209,6 +254,15 @@ msgstr "水平帧："
 
 msgid "Vertical frames:"
 msgstr "垂直帧："
+
+msgid "Start frame:"
+msgstr "开始帧："
+
+msgid "At frame:"
+msgstr "在帧："
+
+msgid "At layer:"
+msgstr "在图层："
 
 msgid "Brush type:"
 msgstr "画笔类型："
@@ -336,10 +390,10 @@ msgid "File:"
 msgstr "文件:"
 
 msgid "Interpolation:"
-msgstr "插补:"
+msgstr "插值："
 
 msgid "Nearest"
-msgstr "最近"
+msgstr "最临近"
 
 msgid "Bilinear"
 msgstr "双线性"
@@ -359,6 +413,9 @@ msgstr "启动"
 msgid "Language"
 msgstr "语言"
 
+msgid "Interface"
+msgstr "界面"
+
 msgid "Themes"
 msgstr "主题"
 
@@ -370,6 +427,9 @@ msgstr "快捷键"
 
 msgid "Backup"
 msgstr "备份"
+
+msgid "Performance"
+msgstr "性能"
 
 msgid "Indicators"
 msgstr "指示"
@@ -404,6 +464,12 @@ msgstr "辅助线颜色:"
 msgid "System Language"
 msgstr "系统语言"
 
+msgid "Display Scale"
+msgstr "显示缩放"
+
+msgid "Dim interface on dialog popup"
+msgstr "对话框弹出时变暗界面"
+
 msgid "Dark"
 msgstr "深色"
 
@@ -418,6 +484,9 @@ msgstr "浅褐色"
 
 msgid "Light"
 msgstr "白色"
+
+msgid "Purple"
+msgstr "紫色"
 
 msgid "Only affect selection"
 msgstr "仅影响所选"
@@ -470,14 +539,14 @@ msgstr "类型："
 msgid "Angle:"
 msgstr "角度："
 
-msgid "Hue"
-msgstr "色相"
+msgid "Hue:"
+msgstr "色相："
 
-msgid "Saturation"
-msgstr "饱和度"
+msgid "Saturation:"
+msgstr "饱和度："
 
-msgid "Value"
-msgstr "值"
+msgid "Value:"
+msgstr "值："
 
 msgid "Apply"
 msgstr "应用"
@@ -524,11 +593,20 @@ msgstr "更新日志"
 msgid "About Pixelorama"
 msgstr "关于 Pixelorama"
 
+msgid "Pixelorama - Pixelate your dreams!"
+msgstr "Pixelorama - 像素化您的梦想！"
+
 msgid "Developed by Orama Interactive"
 msgstr "由 Orama Interactive 开发 - 简体中文翻译 By 大眼仔~旭（Anan）"
 
+msgid "©2019-present by Orama Interactive and contributors"
+msgstr "©版权所有 2019- Orama Interactive 和贡献者"
+
 msgid "Website"
 msgstr "网站"
+
+msgid "GitHub Repo"
+msgstr "GitHub 项目"
 
 msgid "Donate"
 msgstr "捐赠"
@@ -581,6 +659,9 @@ msgstr "拉美语"
 msgid "Spanish"
 msgstr "西班牙语"
 
+msgid "Catalan"
+msgstr "加泰罗尼亚语"
+
 msgid "Esperanto"
 msgstr "世界语"
 
@@ -605,6 +686,12 @@ msgstr "韩语"
 msgid "Hungarian"
 msgstr "匈牙利语"
 
+msgid "Romanian"
+msgstr "罗马尼亚文"
+
+msgid "Japanese"
+msgstr "日文"
+
 msgid "Development Team"
 msgstr "开发团队"
 
@@ -617,8 +704,8 @@ msgstr "UI 设计师"
 msgid "GitHub Contributors"
 msgstr "GitHub 贡献者"
 
-msgid "Art by"
-msgstr "艺术作者"
+msgid "Art by: %s"
+msgstr "艺术作者： %s"
 
 msgid "untitled"
 msgstr "未命名"
@@ -669,6 +756,13 @@ msgstr "油漆桶\n\n"
 "%s 为鼠标左键\n"
 "%s 为鼠标右键"
 
+msgid "Pan\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "平移\n\n"
+"%s 为鼠标左键\n"
+"%s 为鼠标右键"
+
 msgid "Color Picker\n"
 "Select a color from a pixel of the sprite\n\n"
 "%s for left mouse button\n"
@@ -712,6 +806,34 @@ msgid "Lighten/Darken\n\n"
 msgstr "变淡/加深\n\n"
 "%s 为鼠标左键\n"
 "%s 为鼠标右键"
+
+msgid "Rectangle Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr "矩形工具\n\n"
+"%s 鼠标左键\n"
+"%s 鼠标右键\n\n"
+"按住 %s 可创建 1:1 形状\n"
+"按住 %s 可将形状置于单击原始位置\n"
+
+msgid "Ellipse Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr "椭圆工具\n\n"
+"%s 鼠标左键\n"
+"%s 鼠标右键\n\n"
+"按住 %s 可创建 1:1 形状\n"
+"按住 %s 可将形状置于单击原始位置\n"
+
+msgid "Rectangle"
+msgstr "矩形工具"
+
+msgid "Ellipse"
+msgstr "椭圆工具"
 
 msgid "Choose a color for the left tool"
 msgstr "选择左键工具颜色"
@@ -758,7 +880,7 @@ msgid "Displays an icon of the selected right tool next to the cursor on the can
 msgstr "在画布上的光标旁边显示所选右侧工具的图标"
 
 msgid "Guides"
-msgstr "手册"
+msgstr "参考线"
 
 msgid "Guides color:"
 msgstr "参考线颜色："
@@ -769,23 +891,83 @@ msgstr "显示在画布上标尺参考线的颜色"
 msgid "Grid"
 msgstr "网格"
 
-msgid "Grid width:"
-msgstr "网格宽度："
+msgid "Grid type:"
+msgstr "网格类型："
 
-msgid "Sets how far apart are vertical lines of the grid"
-msgstr "设置网格垂直线之间的距离"
+msgid "Sets the type of the grid between rectangular, isometric or both"
+msgstr "设置矩形、方形或两者之间的网格类型"
 
-msgid "Grid height:"
-msgstr "网格高度："
+msgid "Rectangular"
+msgstr "矩形"
 
-msgid "Sets how far apart are horizontal lines of the grid"
-msgstr "设置网格水平线之间的距离"
+msgid "Isometric"
+msgstr "几何体"
+
+msgid "All"
+msgstr "全部"
+
+msgid "Rectangular grid width:"
+msgstr "矩形网格宽度："
+
+msgid "Sets how far apart are vertical lines of the rectangular grid"
+msgstr "设置矩形网格垂直线之间的距离"
+
+msgid "Rectangular grid height:"
+msgstr "矩形网格高度："
+
+msgid "Sets how far apart are horizontal lines of the rectangular grid"
+msgstr "设置矩形网格水平线之间的距离"
+
+msgid "Isometric cell bounds width:"
+msgstr "几何单元格边界宽度："
+
+msgid "Sets the width of the isometric cell's axis aligned bounding box"
+msgstr "设置等深单元轴对齐边界框的宽度"
+
+msgid "Isometric cell bounds height:"
+msgstr "几何单元格边界高度："
+
+msgid "Sets the height of the isometric cell's axis aligned bounding box"
+msgstr "设置等深单元轴对齐边界框的高度"
+
+msgid "Grid offset x:"
+msgstr "网格偏移 X:"
+
+msgid "Sets grid's x offset from the canvas origin (top left corner of the image)"
+msgstr "设置等距网格相对于画布原点的 x 偏移量(图像左上角)"
+
+msgid "Grid offset y:"
+msgstr "网格偏移 Y："
+
+msgid "Sets grid's y offset from the canvas origin (top left corner of the image)"
+msgstr "设置等距网格相对于画布原点的 y 偏移量(图像左上角)"
+
+msgid "Draw over Tile Mode:"
+msgstr "在平铺模式绘制："
+
+msgid "If disabled, the grid will be drawn only over the original image"
+msgstr "如果禁用，网格只能在原始图像上绘制"
 
 msgid "Grid color:"
 msgstr "网格颜色："
 
 msgid "A color of the grid"
 msgstr "网格颜色"
+
+msgid "Pixel Grid"
+msgstr "像素网格"
+
+msgid "Show at zoom:"
+msgstr "在缩放时显示："
+
+msgid "Sets the minimal zoom at which pixel grid will be shown"
+msgstr "设置显示像素网格的最小缩放"
+
+msgid "Pixel grid color:"
+msgstr "像素网格颜色："
+
+msgid "A color of the pixel grid"
+msgstr "像素网格颜色"
 
 msgid "Transparency"
 msgstr "透明度"
@@ -808,8 +990,32 @@ msgstr "检查器颜色 2："
 msgid "Second color of the transparent checker background"
 msgstr "透明检查器背景的第二个颜色"
 
+msgid "Follow Canvas Movement"
+msgstr "跟随画布移动"
+
+msgid "The transparent checker follow the movement of canvas"
+msgstr "透明检查器跟随画布移动"
+
+msgid "Follow Canvas Zoom Level"
+msgstr "跟随画布缩放级别"
+
+msgid "The transparent checker follow the zoom level of canvas"
+msgstr "透明检查器跟随画布缩放级别"
+
 msgid "Only custom preset can be modified"
 msgstr "仅修改自定义预设"
+
+msgid "Set application FPS limit:"
+msgstr "设置应用程序 FPS 限制："
+
+msgid "Limit FPS to 1 when app loses focus"
+msgstr "当应用程序失去焦点时 FPS 限制为 1。"
+
+msgid "Sets the limit of the application's frames per second. The lower the number, the lower the CPU usage, but the application gets slower, choppier and unresponsive. 0 means that there is no limit."
+msgstr "设置应用程序帧每秒的限制。 数字越低，CPU 使用率越低，但应用程序变慢，限制且反应不灵。0 表示没有限制。"
+
+msgid "If this is toggled on, when the application's window loses focus, the FPS limit of the application is set to 1. This helps lower CPU usage when idle. The FPS limit is being reset when the mouse enters the application's window."
+msgstr "如果启用此选项，则当应用程序的窗口失去焦点时，应用程序的 FPS 限制将设置为 1。这有助于降低空闲状态下的 CPU 使用率。当鼠标进入应用程序窗口时将重置 FPS 限制。"
 
 msgid "Brush:"
 msgstr "画笔:"
@@ -817,14 +1023,14 @@ msgstr "画笔:"
 msgid "Select a brush"
 msgstr "选择一个画笔"
 
-msgid "Brush: Pixel"
-msgstr "画笔: 像素"
+msgid "Pixel brush"
+msgstr "像素画笔"
 
-msgid "Brush: Circle"
-msgstr "画笔: 圆圈"
+msgid "Circle brush"
+msgstr "圆形画笔"
 
-msgid "Brush: Filled Circle"
-msgstr "画笔: 实心圆形"
+msgid "Filled circle brush"
+msgstr "填充圆形画笔"
 
 msgid "Custom brush"
 msgstr "自定义画笔"
@@ -832,11 +1038,23 @@ msgstr "自定义画笔"
 msgid "Brush size:"
 msgstr "画笔大小:"
 
-msgid "Overwrite"
-msgstr "覆盖"
+msgid "Overwrite Color"
+msgstr "覆盖颜色"
+
+msgid "Overwrites color instead of blending it. This option is only relevant with colors that are not fully opaque"
+msgstr "覆盖颜色而不是混合颜色。 此选项仅与不完全不透明的颜色有关"
 
 msgid "Pixel Perfect"
-msgstr "完美像素"
+msgstr "平滑像素"
+
+msgid "Makes lines smooth by removing the extra pixels on the edges"
+msgstr "通过去除边缘上多余的像素使线条平滑"
+
+msgid "Fill Shape"
+msgstr "填充形状"
+
+msgid "Fills the drawn shape with color, instead of drawing a hollow shape"
+msgstr "用颜色填充绘制的形状，而不是绘制空心形状"
 
 msgid "Brush color from"
 msgstr "画笔颜色从"
@@ -864,6 +1082,12 @@ msgstr "模式"
 
 msgid "Offset"
 msgstr "偏移"
+
+msgid "Simple Shading"
+msgstr "简单阴影"
+
+msgid "Hue Shifting"
+msgstr "色调偏移"
 
 msgid "Lighten"
 msgstr "减淡"
@@ -984,8 +1208,29 @@ msgstr "未来帧"
 msgid "Manage frame tags"
 msgstr "管理帧标签"
 
+msgid "Frame Tag Properties"
+msgstr "覆盖标签属性"
+
+msgid "Add a new frame tag"
+msgstr "添加一个新的帧标签"
+
+msgid "Name:"
+msgstr "名称："
+
+msgid "From:"
+msgstr "从："
+
+msgid "To:"
+msgstr "到："
+
 msgid "Animation plays only on frames of the same tag"
 msgstr "动画仅在同一个标签的帧上播放"
+
+msgid "Tag %s (Frame %s)"
+msgstr "标签 %s (帧 %s)"
+
+msgid "Tag %s (Frames %s-%s)"
+msgstr "标签 %s (帧 %s-%s)"
 
 msgid "If it's selected, the animation plays only on the frames that have the same tag.\n"
 "If it's not, the animation will play for all frames, ignoring tags."
@@ -1019,6 +1264,12 @@ msgstr "取消链接单元"
 msgid "Unlink Cel"
 msgstr "取消链接单元"
 
+msgid "Frame Properties"
+msgstr "帧属性"
+
+msgid "Frame properties"
+msgstr "帧属性"
+
 msgid "Layer"
 msgstr "图层"
 
@@ -1046,11 +1297,17 @@ msgstr "当前图层与下面图层合并"
 msgid "Opacity:"
 msgstr "不透明度:"
 
+msgid "Tile mode opacity:"
+msgstr "平铺模式不透明度："
+
 msgid "Toggle layer's visibility"
 msgstr "切换图层可见性"
 
 msgid "Lock/unlock layer"
 msgstr "锁定/解锁图层"
+
+msgid "Frame: %s, Layer: %s"
+msgstr "帧： %s, 图层：%s"
 
 msgid "Enable/disable cel linking\n\n"
 "Linked cels are being shared across multiple frames"
@@ -1150,6 +1407,12 @@ msgstr "撤销：删除帧标签"
 msgid "Redo: Delete Frame Tag"
 msgstr "重做：删除帧标签"
 
+msgid "Undo: Change frame duration"
+msgstr "撤消：更改帧持续时间"
+
+msgid "Redo: Change frame duration"
+msgstr "重做：更改帧持续时间"
+
 msgid "Move Guide"
 msgstr "移除辅助线"
 
@@ -1159,11 +1422,11 @@ msgstr "文件已保存"
 msgid "File autosaved"
 msgstr "文件已自动保存"
 
-msgid "File failed to open"
-msgstr "文件打开失败"
+msgid "File failed to open. Error code %s"
+msgstr "打开文件失败。错误代码 %s"
 
-msgid "File failed to save"
-msgstr "文件保存失败"
+msgid "File failed to save. Error code %s"
+msgstr "保存文件失败。错误代码 %s"
 
 msgid "File exported"
 msgstr "文件已导出"
@@ -1189,6 +1452,9 @@ msgstr "使用当前左侧和右侧颜色"
 msgid "Create a new empty palette?"
 msgstr "创建一个新的空调色板?"
 
+msgid "Error"
+msgstr "错误"
+
 msgid "Error: Palette must have a valid name."
 msgstr "错误：调色板必须具有有效的名称。"
 
@@ -1197,6 +1463,15 @@ msgstr "无效的调色板文件!"
 
 msgid "Edit Palette"
 msgstr "编辑调色板"
+
+msgid "Create colors with alpha component"
+msgstr "创建带有 Alpha 组件的颜色"
+
+msgid "Get colors only from selection"
+msgstr "仅从所选获取颜色"
+
+msgid "Get colors from"
+msgstr "获取颜色从"
 
 msgid "Patrons:"
 msgstr "赞助:"
@@ -1237,8 +1512,14 @@ msgstr "默认填充颜色："
 msgid "A default background color of a new image"
 msgstr "设置新建图像的背景颜色"
 
-msgid "Lock aspect ratio:"
-msgstr "锁定长宽比："
+msgid "Lock aspect ratio"
+msgstr "锁定长宽比"
+
+msgid "Portrait"
+msgstr "纵向"
+
+msgid "Landscape"
+msgstr "横向"
 
 msgid "Templates:"
 msgstr "模板："
@@ -1260,6 +1541,9 @@ msgstr "矩形选区"
 
 msgid "Zoom"
 msgstr "缩放"
+
+msgid "Pan"
+msgstr "平移"
 
 msgid "Color Picker"
 msgstr "拾色器"
@@ -1302,6 +1586,9 @@ msgstr "分配给鼠标右键的工具"
 
 msgid "Cannot find last project file."
 msgstr "无法找到最后一个项目文件。"
+
+msgid "Cannot find project file."
+msgstr "无法找到项目文件。"
 
 msgid "You haven't saved or opened any project in Pixelorama yet!"
 msgstr "您尚未在 Pixelorama 中保存或打开任何项目！"
@@ -1349,6 +1636,9 @@ msgstr "重新加载备份"
 msgid "Remove currently selected palette"
 msgstr "删除当前所选调色板"
 
+msgid "Are you sure you want to remove this palette? (Cannot be undone)"
+msgstr "您确定要删除该调色板吗 (无法撤消)？"
+
 msgid "You can't remove more palettes!"
 msgstr "您无法删除更多调色板！"
 
@@ -1357,4 +1647,61 @@ msgstr "无法删除调色板，因为它不存在！"
 
 msgid "An error occured while removing the palette! Error code: %s"
 msgstr "删除调色板时发生错误！ 错误代码：%s"
+
+msgid "and"
+msgstr "和"
+
+msgid "Move the selected frame to the left."
+msgstr "移动所选帧到左侧。"
+
+msgid "Move the selected frame to the right."
+msgstr "移动所选帧到右侧。"
+
+msgid "Frame duration"
+msgstr "帧持续时间"
+
+msgid "Tiled In Both Axis"
+msgstr "在两个轴上平移"
+
+msgid "Tiled In X Axis"
+msgstr "在 X 轴上平移"
+
+msgid "Tiled In Y Axis"
+msgstr "在 Y 轴上平移"
+
+msgid "Create a new palette"
+msgstr "创建一个新的调色板"
+
+msgid "Create New Palette"
+msgstr "创建新的调色板"
+
+msgid "Comment:"
+msgstr "注释："
+
+msgid "Empty"
+msgstr "空的"
+
+msgid "From Current Palette"
+msgstr "从当前调色板"
+
+msgid "From Current Sprite"
+msgstr "从当前 Sprite"
+
+msgid "From Current Selection"
+msgstr "从当前选择"
+
+msgid "Add a new color"
+msgstr "添加一个新颜色"
+
+msgid "Remove a selected color"
+msgstr "删除所选颜色"
+
+msgid "Palette with the same name and path already exists!"
+msgstr "具有相同名称和路径的调色板已经存在！"
+
+msgid "Palette name is required!"
+msgstr "调色板名称为必填项！"
+
+msgid "Reducing palette size will reset positions of colors. Colors that don't fit in new palette size will be lost!"
+msgstr "减小调色板尺寸将重置颜色的位置。不适合新调色板尺寸的颜色将丢失！"
 

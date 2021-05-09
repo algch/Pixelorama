@@ -39,13 +39,19 @@ class Slot:
 signal color_changed(color, button)
 
 var _tools = {
-	"RectSelect" : "res://src/Tools/RectSelect.tscn",
+	"RectSelect" : "res://src/Tools/SelectionTools/RectSelect.tscn",
+	"ColorSelect" : "res://src/Tools/SelectionTools/ColorSelect.tscn",
+	"MagicWand" : "res://src/Tools/SelectionTools/MagicWand.tscn",
+	"Move" : "res://src/Tools/Move.tscn",
 	"Zoom" : "res://src/Tools/Zoom.tscn",
+	"Pan" : "res://src/Tools/Pan.tscn",
 	"ColorPicker" : "res://src/Tools/ColorPicker.tscn",
 	"Pencil" : "res://src/Tools/Pencil.tscn",
 	"Eraser" : "res://src/Tools/Eraser.tscn",
 	"Bucket" : "res://src/Tools/Bucket.tscn",
 	"LightenDarken" : "res://src/Tools/LightenDarken.tscn",
+	"RectangleTool" : "res://src/Tools/RectangleTool.tscn",
+	"EllipseTool" : "res://src/Tools/EllipseTool.tscn",
 }
 var _slots = {}
 var _panels = {}
@@ -58,8 +64,12 @@ var control := false
 var shift := false
 var alt := false
 
+onready var left_tool_background := preload("res://assets/graphics/tool_backgrounds/l.png")
+onready var right_tool_background := preload("res://assets/graphics/tool_backgrounds/r.png")
+onready var left_right_tool_background := preload("res://assets/graphics/tool_backgrounds/l_r.png")
 
-func _ready():
+
+func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	_slots[BUTTON_LEFT] = Slot.new("Left tool")
 	_slots[BUTTON_RIGHT] = Slot.new("Right tool")
@@ -68,13 +78,17 @@ func _ready():
 	_tool_buttons = Global.find_node_by_name(Global.control, "ToolButtons")
 
 	var value = Global.config_cache.get_value(_slots[BUTTON_LEFT].kname, "tool", "Pencil")
+	if not value in _tools:
+		value = "Pencil"
 	set_tool(value, BUTTON_LEFT)
 	value = Global.config_cache.get_value(_slots[BUTTON_RIGHT].kname, "tool", "Eraser")
+	if not value in _tools:
+		value = "Eraser"
 	set_tool(value, BUTTON_RIGHT)
 	value = Global.config_cache.get_value(_slots[BUTTON_LEFT].kname, "color", Color.black)
-	assign_color(value, BUTTON_LEFT)
+	assign_color(value, BUTTON_LEFT, false)
 	value = Global.config_cache.get_value(_slots[BUTTON_RIGHT].kname, "color", Color.white)
-	assign_color(value, BUTTON_RIGHT)
+	assign_color(value, BUTTON_RIGHT, false)
 
 	update_tool_buttons()
 	update_tool_cursors()
@@ -115,13 +129,14 @@ func default_color() -> void:
 func swap_color() -> void:
 	var left = _slots[BUTTON_LEFT].color
 	var right = _slots[BUTTON_RIGHT].color
-	assign_color(right, BUTTON_LEFT)
-	assign_color(left, BUTTON_RIGHT)
+	assign_color(right, BUTTON_LEFT, false)
+	assign_color(left, BUTTON_RIGHT, false)
 
 
-func assign_color(color : Color, button : int) -> void:
+func assign_color(color : Color, button : int, change_alpha := true) -> void:
 	var c : Color = _slots[button].color
-	if color.a == 0:
+	# This was requested by Issue #54 on GitHub
+	if color.a == 0 and change_alpha:
 		if color.r != c.r or color.g != c.g or color.b != c.b:
 			color.a = 1
 	_slots[button].color = color
@@ -135,14 +150,15 @@ func get_assigned_color(button : int) -> Color:
 
 func update_tool_buttons() -> void:
 	for child in _tool_buttons.get_children():
-		var texture : TextureRect = child.get_child(0)
-		var filename = child.name.to_lower()
+		var texture : TextureRect = child.get_node("Background")
 		if _slots[BUTTON_LEFT].tool_node.name == child.name:
-			filename += "_l"
-		if _slots[BUTTON_RIGHT].tool_node.name == child.name:
-			filename += "_r"
-		filename += ".png"
-		Global.change_button_texturerect(texture, filename)
+			texture.texture = left_tool_background
+			if _slots[BUTTON_RIGHT].tool_node.name == child.name:
+				texture.texture = left_right_tool_background
+		elif _slots[BUTTON_RIGHT].tool_node.name == child.name:
+			texture.texture = right_tool_background
+		else:
+			texture.texture = null
 
 
 func update_tool_cursors() -> void:
@@ -159,9 +175,18 @@ func draw_indicator() -> void:
 		_slots[BUTTON_RIGHT].tool_node.draw_indicator()
 
 
+func draw_preview() -> void:
+	_slots[BUTTON_LEFT].tool_node.draw_preview()
+	_slots[BUTTON_RIGHT].tool_node.draw_preview()
+
+
 func handle_draw(position : Vector2, event : InputEvent) -> void:
 	if not (Global.can_draw and Global.has_focus):
 		return
+
+	var draw_pos := position
+	if Global.mirror_view:
+		draw_pos.x = Global.current_project.size.x - position.x - 1
 
 	if event is InputEventWithModifiers:
 		control = event.control
@@ -172,23 +197,22 @@ func handle_draw(position : Vector2, event : InputEvent) -> void:
 		if event.button_index in [BUTTON_LEFT, BUTTON_RIGHT]:
 			if event.pressed and _active_button == -1:
 				_active_button = event.button_index
-				_slots[_active_button].tool_node.draw_start(position)
+				_slots[_active_button].tool_node.draw_start(draw_pos)
 			elif not event.pressed and event.button_index == _active_button:
-				_slots[_active_button].tool_node.draw_end(position)
+				_slots[_active_button].tool_node.draw_end(draw_pos)
 				_active_button = -1
 
 	if event is InputEventMouseMotion:
-		if Engine.get_version_info().major == 3 && Engine.get_version_info().minor >= 2:
-			pen_pressure = event.pressure
-			if Global.pressure_sensitivity_mode == Global.Pressure_Sensitivity.NONE:
-				pen_pressure = 1.0
+		pen_pressure = event.pressure
+		if Global.pressure_sensitivity_mode == Global.PressureSensitivity.NONE:
+			pen_pressure = 1.0
 
 		if not position.is_equal_approx(_last_position):
 			_last_position = position
 			_slots[BUTTON_LEFT].tool_node.cursor_move(position)
 			_slots[BUTTON_RIGHT].tool_node.cursor_move(position)
 			if _active_button != -1:
-				_slots[_active_button].tool_node.draw_move(position)
+				_slots[_active_button].tool_node.draw_move(draw_pos)
 
 	var project : Project = Global.current_project
 	var text := "[%s×%s]" % [project.size.x, project.size.y]

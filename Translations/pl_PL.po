@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2020-08-08 23:59\n"
+"PO-Revision-Date: 2021-04-21 07:54\n"
 
 msgid "OK"
 msgstr "OK"
@@ -38,6 +38,9 @@ msgstr "Rozmiar płótna"
 
 msgid "Frame Size"
 msgstr "Rozmiar klatki"
+
+msgid "Size"
+msgstr "Rozmiar"
 
 msgid "Width:"
 msgstr "Szerokość:"
@@ -114,6 +117,9 @@ msgstr "Przywróć zmiany"
 msgid "Copy"
 msgstr "Kopiuj"
 
+msgid "Cut"
+msgstr "Wytnij"
+
 msgid "Paste"
 msgstr "Wklej"
 
@@ -123,11 +129,20 @@ msgstr "Usuń"
 msgid "Scale Image"
 msgstr "Skaluj obraz"
 
+msgid "Pixels"
+msgstr "Piksele"
+
+msgid "Percentage"
+msgstr "Procentowo"
+
 msgid "Crop Image"
 msgstr "Przytnij obraz"
 
 msgid "Resize Canvas"
 msgstr "Zmień rozmiar płótna"
+
+msgid "Centralize Image"
+msgstr "Wyśrodkuj obraz"
 
 msgid "Rotate Image"
 msgstr "Obróć obraz"
@@ -150,8 +165,29 @@ msgstr "Ustawienia"
 msgid "Tile Mode"
 msgstr "Tryb kafelkowy"
 
+msgid "Window Transparency"
+msgstr "Przezroczystość okna"
+
+msgid "Panel Layout"
+msgstr "Układ panelu"
+
+msgid "Auto"
+msgstr "Automatyczny"
+
+msgid "Widescreen"
+msgstr "Szeroki ekran"
+
+msgid "Tallscreen"
+msgstr "Długi ekran"
+
+msgid "Mirror View"
+msgstr "Widok lustrzany"
+
 msgid "Show Grid"
 msgstr "Pokaż siatkę"
+
+msgid "Show Pixel Grid"
+msgstr "Pokaż siatkę pixeli"
 
 msgid "Show Rulers"
 msgstr "Pokaż linijki"
@@ -183,14 +219,23 @@ msgstr "Opcje importowania"
 msgid "Import as:"
 msgstr "Importuj jako:"
 
+msgid "Recent projects"
+msgstr "Ostatnie projekty"
+
 msgid "New tab"
 msgstr "Nowa karta"
 
 msgid "Spritesheet (new tab)"
 msgstr "Spritesheet (nowa karta)"
 
+msgid "Spritesheet (new layer)"
+msgstr "Spritesheet (nowa warstwa)"
+
 msgid "New frame"
 msgstr "Nowa klatka"
+
+msgid "Replace frame"
+msgstr "Zamień klatkę"
 
 msgid "New layer"
 msgstr "Nowa warstwa"
@@ -209,6 +254,15 @@ msgstr "Klatki poziome:"
 
 msgid "Vertical frames:"
 msgstr "Klatki pionowe:"
+
+msgid "Start frame:"
+msgstr "Klatka początkowa:"
+
+msgid "At frame:"
+msgstr "W klatce:"
+
+msgid "At layer:"
+msgstr "Na warstwie:"
 
 msgid "Brush type:"
 msgstr "Typ pędzla:"
@@ -358,6 +412,9 @@ msgstr "Przy uruchomieniu"
 msgid "Language"
 msgstr "Język"
 
+msgid "Interface"
+msgstr "Interfejs"
+
 msgid "Themes"
 msgstr "Motywy"
 
@@ -369,6 +426,9 @@ msgstr "Skróty klawiszowe"
 
 msgid "Backup"
 msgstr "Utwórz kopię zapasową"
+
+msgid "Performance"
+msgstr "Wydajność"
 
 msgid "Indicators"
 msgstr "Wskaźniki"
@@ -403,6 +463,12 @@ msgstr "Kolor prowadnicy:"
 msgid "System Language"
 msgstr "Język systemowy"
 
+msgid "Display Scale"
+msgstr "Pokaż skalę"
+
+msgid "Dim interface on dialog popup"
+msgstr "Przyciemnij interfejs, kiedy pojawia się okno dialogowe"
+
 msgid "Dark"
 msgstr "Ciemny"
 
@@ -418,11 +484,14 @@ msgstr "Karmelowy"
 msgid "Light"
 msgstr "Jasny"
 
+msgid "Purple"
+msgstr "Fioletowy"
+
 msgid "Only affect selection"
 msgstr "Wpływ tylko na zaznaczenie"
 
 msgid "Current cel"
-msgstr "Bieżąca kalka"
+msgstr "Bieżąca komórka"
 
 msgid "Current frame"
 msgstr "Aktualna klatka"
@@ -469,14 +538,14 @@ msgstr "Typ:"
 msgid "Angle:"
 msgstr "Kąt:"
 
-msgid "Hue"
-msgstr "Odcień"
+msgid "Hue:"
+msgstr "Odcień:"
 
-msgid "Saturation"
-msgstr "Nasycenie"
+msgid "Saturation:"
+msgstr "Nasycenie:"
 
-msgid "Value"
-msgstr "Wartość"
+msgid "Value:"
+msgstr "Wartość:"
 
 msgid "Apply"
 msgstr "Zastosuj"
@@ -523,11 +592,20 @@ msgstr "Lista zmian"
 msgid "About Pixelorama"
 msgstr "O Pixeloramie"
 
+msgid "Pixelorama - Pixelate your dreams!"
+msgstr "Pixelorama - Spikselizuj swoje marzenia!"
+
 msgid "Developed by Orama Interactive"
 msgstr "Tworzony przez: Orama Interactive"
 
+msgid "©2019-present by Orama Interactive and contributors"
+msgstr "©2019-teraz przez Oramę Interactive i współtwórców"
+
 msgid "Website"
 msgstr "Strona internetowa"
+
+msgid "GitHub Repo"
+msgstr "Repozytorium GitHub"
 
 msgid "Donate"
 msgstr "Wspomóż"
@@ -580,6 +658,9 @@ msgstr "Łotewski"
 msgid "Spanish"
 msgstr "Hiszpański"
 
+msgid "Catalan"
+msgstr "Kataloński"
+
 msgid "Esperanto"
 msgstr "Esperanto"
 
@@ -604,6 +685,12 @@ msgstr "Koreański"
 msgid "Hungarian"
 msgstr "Węgierski"
 
+msgid "Romanian"
+msgstr "Rumuński"
+
+msgid "Japanese"
+msgstr "Japoński"
+
 msgid "Development Team"
 msgstr "Zespół developerski"
 
@@ -616,8 +703,8 @@ msgstr "Projektant interfejsu użytkownika"
 msgid "GitHub Contributors"
 msgstr "Wnieśli wkład (GitHub)"
 
-msgid "Art by"
-msgstr "Grafika wykonana przez"
+msgid "Art by: %s"
+msgstr "Artysta: %s"
 
 msgid "untitled"
 msgstr "bez nazwy"
@@ -668,6 +755,13 @@ msgstr "Przybliżenie\n\n"
 "%s dla lewego przycisku myszy\n"
 "%s dla prawego przycisku myszy"
 
+msgid "Pan\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Przesuń\n\n"
+"%s dla lewego przycisku myszy\n"
+"%s dla prawego przycisku myszy"
+
 msgid "Color Picker\n"
 "Select a color from a pixel of the sprite\n\n"
 "%s for left mouse button\n"
@@ -694,23 +788,51 @@ msgid "Eraser\n\n"
 "%s for right mouse button\n\n"
 "Hold %s to make a line"
 msgstr "Gumka\n\n"
-"%s dla lewego przycisku myszy\n"
-"%s dla prawego przycisku myszy\n\n"
+"%s na lewy przycisk myszy\n"
+"%s na prawy przycisk myszy\n\n"
 "Przytrzymaj %s aby użyć w linii prostej"
 
 msgid "Bucket\n\n"
 "%s for left mouse button\n"
 "%s for right mouse button"
 msgstr "Wiaderko\n\n"
-"%s dla lewego przycisku myszy\n"
-"%s dla prawego przycisku myszy"
+"%s na lewy przycisk myszy\n"
+"%s na prawy przycisk myszy"
 
 msgid "Lighten/Darken\n\n"
 "%s for left mouse button\n"
 "%s for right mouse button"
 msgstr "Rozjaśnianie/Ściemnianie\n\n"
-"%s dla lewego przycisku myszy\n"
-"%s dla prawego przycisku myszy"
+"%s na lewy przycisk myszy\n"
+"%s na prawy przycisk myszy"
+
+msgid "Rectangle Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr "Prostokąt\n\n"
+"%s na lewy przycisk myszy\n"
+"%s na prawy przycisk myszy\n\n"
+"Przytrzymaj %s aby stworzyć kwadrat\n"
+"Przytrzymaj %s aby wyśrodkować kształt na źródłowym miejscu kliknięcia\n"
+
+msgid "Ellipse Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+msgstr "Elipsa\n\n"
+"%s na lewy przycisk myszy\n"
+"%s na prawy przycisk myszy\n\n"
+"Przytrzymaj %s aby stworzyć okrąg/koło\n"
+"Przytrzymaj %s aby wyśrodkować kształt na źródłowym miejscu kliknięcia\n"
+
+msgid "Rectangle"
+msgstr "Prostokąt"
+
+msgid "Ellipse"
+msgstr "Elipsa"
 
 msgid "Choose a color for the left tool"
 msgstr "Wybiera kolor dla lewego narzędzia"
@@ -768,17 +890,62 @@ msgstr "Kolor prowadnic wyświetlanych na płótnie"
 msgid "Grid"
 msgstr "Siatka"
 
-msgid "Grid width:"
+msgid "Grid type:"
+msgstr "Typ siatki:"
+
+msgid "Sets the type of the grid between rectangular, isometric or both"
+msgstr "Ustawia typ siatki pomiędzy prostokątną, izometryczną lub oba"
+
+msgid "Rectangular"
+msgstr "Prostokątna"
+
+msgid "Isometric"
+msgstr "Izometryczna"
+
+msgid "All"
+msgstr "Wszystkie"
+
+msgid "Rectangular grid width:"
 msgstr "Szerokość siatki:"
 
-msgid "Sets how far apart are vertical lines of the grid"
+msgid "Sets how far apart are vertical lines of the rectangular grid"
 msgstr "Ustawia jak daleko od siebie są pionowe linie siatki"
 
-msgid "Grid height:"
-msgstr "Wysokość siatki:"
+msgid "Rectangular grid height:"
+msgstr "Długość siatki:"
 
-msgid "Sets how far apart are horizontal lines of the grid"
-msgstr "Ustawia jak daleko od siebie są poziome linie siatki"
+msgid "Sets how far apart are horizontal lines of the rectangular grid"
+msgstr "Ustawia jak daleko od siebie są pionowe linie siatki"
+
+msgid "Isometric cell bounds width:"
+msgstr "Szerokość granic komórki izometrycznej:"
+
+msgid "Sets the width of the isometric cell's axis aligned bounding box"
+msgstr "Ustawia szerokość osi komórki izometrycznej położonej na granicy pola"
+
+msgid "Isometric cell bounds height:"
+msgstr "Długość granic komórki izometrycznej:"
+
+msgid "Sets the height of the isometric cell's axis aligned bounding box"
+msgstr "Ustawia długość osi komórki izometrycznej położonej na granicy pola"
+
+msgid "Grid offset x:"
+msgstr "Przesunięcie siatki x:"
+
+msgid "Sets grid's x offset from the canvas origin (top left corner of the image)"
+msgstr "Ustawia przesunięcie siatki na osi x od pozycji płótna (lewy górny róg obrazu)"
+
+msgid "Grid offset y:"
+msgstr "Przesunięcie siatki y:"
+
+msgid "Sets grid's y offset from the canvas origin (top left corner of the image)"
+msgstr "Ustawia przesunięcie siatki na osi y od pozycji płótna (lewy górny róg obrazu)"
+
+msgid "Draw over Tile Mode:"
+msgstr "Rysuj nad trybem kafelkowym:"
+
+msgid "If disabled, the grid will be drawn only over the original image"
+msgstr "Jeśli wyłączone, siatka będzie rysowana tylko nad oryginalnym obrazem"
 
 msgid "Grid color:"
 msgstr "Kolor siatki:"
@@ -786,29 +953,68 @@ msgstr "Kolor siatki:"
 msgid "A color of the grid"
 msgstr "Kolor siatki"
 
+msgid "Pixel Grid"
+msgstr "Siatka pikseli"
+
+msgid "Show at zoom:"
+msgstr "Pokaż w powiększeniu:"
+
+msgid "Sets the minimal zoom at which pixel grid will be shown"
+msgstr "Ustawia minimalne przybliżenie, przy którym siatka pixeli będzie wyświetlana"
+
+msgid "Pixel grid color:"
+msgstr "Kolor siatki pikseli:"
+
+msgid "A color of the pixel grid"
+msgstr "Kolor siatki pikseli"
+
 msgid "Transparency"
 msgstr "Przezroczystość"
 
 msgid "Checker size:"
-msgstr "Rozmiar komórek:"
+msgstr "Rozmiar komórek przezroczystej siatki:"
 
 msgid "Size of the transparent checker background"
-msgstr "Rozmiar komórek do rysowania - szachownicy"
+msgstr "Rozmiar tła przezroczystej siatki"
 
 msgid "Checker color 1:"
-msgstr "Kolor komórek 1:"
+msgstr "Kolor komórek przezroczystej siatki 1:"
 
 msgid "First color of the transparent checker background"
-msgstr "Pierwszy kolor komórek do rysowania - szachownicy"
+msgstr "Pierwszy kolor komórek przezroczystej siatki"
 
 msgid "Checker color 2:"
-msgstr "Kolor komórek 2:"
+msgstr "Kolor komórek przezroczystej siatki 2:"
 
 msgid "Second color of the transparent checker background"
-msgstr "Drugi kolor komórek do rysowania - szachownicy"
+msgstr "Drugi kolor komórek przezroczystej siatki"
+
+msgid "Follow Canvas Movement"
+msgstr "Śledź ruch płótna"
+
+msgid "The transparent checker follow the movement of canvas"
+msgstr "Przezroczysta siatka śledzi ruch płótna"
+
+msgid "Follow Canvas Zoom Level"
+msgstr "Śledź poziom przybliżenia płótna"
+
+msgid "The transparent checker follow the zoom level of canvas"
+msgstr "Przezroczysta siatka śledzi poziom przybliżenia płótna"
 
 msgid "Only custom preset can be modified"
 msgstr "Tylko niestandardowe ustawienia mogą być modyfikowane"
+
+msgid "Set application FPS limit:"
+msgstr "Ustaw limit FPS dla aplikacji:"
+
+msgid "Limit FPS to 1 when app loses focus"
+msgstr "Ogranicz limit FPS do 1, kiedy okno aplikacji straci skupienie"
+
+msgid "Sets the limit of the application's frames per second. The lower the number, the lower the CPU usage, but the application gets slower, choppier and unresponsive. 0 means that there is no limit."
+msgstr "Ustawia limit klatek aplikacji na sekundę. Im niższa liczba, tym niższe zużycie procesora, ale aplikacja staje się wolniejsza. 0 oznacza, że nie ma limitu."
+
+msgid "If this is toggled on, when the application's window loses focus, the FPS limit of the application is set to 1. This helps lower CPU usage when idle. The FPS limit is being reset when the mouse enters the application's window."
+msgstr "Jeśli ta opcja jest włączona i okno aplikacji straci skupienie, to limit FPS aplikacji jest ustawiony na 1. To pomaga obniżyć zużycie procesora podczas bezczynności. Limit FPS zostanie przywrócony, gdy kursor myszy wróci na okno aplikacji."
 
 msgid "Brush:"
 msgstr "Pędzel:"
@@ -816,14 +1022,14 @@ msgstr "Pędzel:"
 msgid "Select a brush"
 msgstr "Wybierz pędzel"
 
-msgid "Brush: Pixel"
-msgstr "Pędzel: Piksel"
+msgid "Pixel brush"
+msgstr "Pikselowy pędzel"
 
-msgid "Brush: Circle"
-msgstr "Pędzel: Okrąg"
+msgid "Circle brush"
+msgstr "Okrągły pędzel"
 
-msgid "Brush: Filled Circle"
-msgstr "Pędzel: Wypełniony okrąg"
+msgid "Filled circle brush"
+msgstr "Wypełniony okrągły pędzel"
 
 msgid "Custom brush"
 msgstr "Niestandardowy pędzel"
@@ -831,11 +1037,23 @@ msgstr "Niestandardowy pędzel"
 msgid "Brush size:"
 msgstr "Rozmiar pędzla:"
 
-msgid "Overwrite"
-msgstr "Nadpisz"
+msgid "Overwrite Color"
+msgstr "Zastąp kolor"
+
+msgid "Overwrites color instead of blending it. This option is only relevant with colors that are not fully opaque"
+msgstr "Zastępuje kolor zamiast zmieszać się z nim. Ta opcja zadziała tylko dla kolorów, które nie są w pełni przezroczyste"
 
 msgid "Pixel Perfect"
 msgstr "Pixel Perfect"
+
+msgid "Makes lines smooth by removing the extra pixels on the edges"
+msgstr "Sprawia, że linie są gładkie przez usunięcie dodatkowych pikseli na krawędziach"
+
+msgid "Fill Shape"
+msgstr "Wypełnij kształt"
+
+msgid "Fills the drawn shape with color, instead of drawing a hollow shape"
+msgstr "Wypełnia narysowany kształt kolorem, zamiast rysować same obramowanie"
 
 msgid "Brush color from"
 msgstr "Nadpisywanie koloru pędzla"
@@ -863,6 +1081,12 @@ msgstr "Wzorzec"
 
 msgid "Offset"
 msgstr "Przesunięcie"
+
+msgid "Simple Shading"
+msgstr "Proste Cieniowanie"
+
+msgid "Hue Shifting"
+msgstr "Przesuwanie Hue"
 
 msgid "Lighten"
 msgstr "Rozjaśnianie"
@@ -983,8 +1207,29 @@ msgstr "Przyszłe klatki"
 msgid "Manage frame tags"
 msgstr "Zarządzaj tagami klatek"
 
+msgid "Frame Tag Properties"
+msgstr "Właściwości tagu klatek"
+
+msgid "Add a new frame tag"
+msgstr "Dodaj nowy tag klatek"
+
+msgid "Name:"
+msgstr "Nazwa:"
+
+msgid "From:"
+msgstr "Od:"
+
+msgid "To:"
+msgstr "Do:"
+
 msgid "Animation plays only on frames of the same tag"
 msgstr "Animacja odtwarza się tylko na klatkach z tym samym tagiem"
+
+msgid "Tag %s (Frame %s)"
+msgstr "Tag %s (Klatka %s)"
+
+msgid "Tag %s (Frames %s-%s)"
+msgstr "Tag %s (Klatki %s-%s)"
 
 msgid "If it's selected, the animation plays only on the frames that have the same tag.\n"
 "If it's not, the animation will play for all frames, ignoring tags."
@@ -1013,10 +1258,16 @@ msgid "Add Frame Tag"
 msgstr ""
 
 msgid "Link Cel"
-msgstr "Połącz kalkę"
+msgstr "Połącz komórkę"
 
 msgid "Unlink Cel"
-msgstr "Odłącz kalkę"
+msgstr "Odłącz komórkę"
+
+msgid "Frame Properties"
+msgstr "Właściwości klatki"
+
+msgid "Frame properties"
+msgstr "Właściwości klatki"
 
 msgid "Layer"
 msgstr "Warstwa"
@@ -1045,16 +1296,22 @@ msgstr "Połącz obecną warstwę z warstwą powyżej"
 msgid "Opacity:"
 msgstr "Przezroczystość:"
 
+msgid "Tile mode opacity:"
+msgstr "Przezroczystość w trybie kafelkowym:"
+
 msgid "Toggle layer's visibility"
 msgstr "Ukrywanie warstwy"
 
 msgid "Lock/unlock layer"
 msgstr "Zablokuj/odblokuj warstwę"
 
+msgid "Frame: %s, Layer: %s"
+msgstr "Klatka: %s, Warstwa: %s"
+
 msgid "Enable/disable cel linking\n\n"
 "Linked cels are being shared across multiple frames"
-msgstr "Włącz/wyłącz łączenie kalek\n\n"
-"Złączone kalki są współdzielone przez wiele klatek"
+msgstr "Włącz/wyłącz łączenie komórek\n\n"
+"Złączone komórki są współdzielone przez wiele komórek"
 
 msgid "Palette"
 msgstr "Paleta kolorów"
@@ -1138,16 +1395,22 @@ msgid "Redo: Delete Custom Brush"
 msgstr "Przywróć: Usuwanie niestandardowego pędzla"
 
 msgid "Undo: Modify Frame Tag"
-msgstr "Cofnij: Modyfikuj tag klatki"
+msgstr "Cofnij: Modyfikuj tag klatek"
 
 msgid "Redo: Modify Frame Tag"
-msgstr "Przywróć: Modyfikuj tag klatki"
+msgstr "Przywróć: Modyfikuj tag klatek"
 
 msgid "Undo: Delete Frame Tag"
-msgstr "Cofnij: Usuń tag klatki"
+msgstr "Cofnij: Usuń tag klatek"
 
 msgid "Redo: Delete Frame Tag"
-msgstr "Przywróć: Usuń tag klatki"
+msgstr "Przywróć: Usuń tag klatek"
+
+msgid "Undo: Change frame duration"
+msgstr "Cofnij: Zmień czas trwania klatki"
+
+msgid "Redo: Change frame duration"
+msgstr "Przywróć: Zmień czas trwania klatki"
 
 msgid "Move Guide"
 msgstr "Przesuń prowadnice"
@@ -1158,11 +1421,11 @@ msgstr "Plik został zapisany"
 msgid "File autosaved"
 msgstr "Automatycznie zapisano plik"
 
-msgid "File failed to open"
-msgstr "Nie udało się otworzyć pliku"
+msgid "File failed to open. Error code %s"
+msgstr "Nie udało się otworzyć pliku. Kod błędu %s"
 
-msgid "File failed to save"
-msgstr "Nie udało się zapisać pliku"
+msgid "File failed to save. Error code %s"
+msgstr "Nie udało się zapisać pliku. Kod błędu %s"
 
 msgid "File exported"
 msgstr "Plik został wyeksportowany"
@@ -1188,6 +1451,9 @@ msgstr "Użyj aktualnych kolorów lewego i prawego"
 msgid "Create a new empty palette?"
 msgstr "Utworzyć nową pustą paletę kolorów?"
 
+msgid "Error"
+msgstr "Błąd"
+
 msgid "Error: Palette must have a valid name."
 msgstr "Błąd: Paleta kolorów musi mieć poprawną nazwę."
 
@@ -1196,6 +1462,15 @@ msgstr "Niepoprawny plik palety kolorów!"
 
 msgid "Edit Palette"
 msgstr "Edytuj paletę kolorów"
+
+msgid "Create colors with alpha component"
+msgstr "Utwórz kolory z kanałem alpha"
+
+msgid "Get colors only from selection"
+msgstr "Pobierz kolory tylko z zaznaczenia"
+
+msgid "Get colors from"
+msgstr "Pobierz kolory z"
 
 msgid "Patrons:"
 msgstr "Patroni:"
@@ -1236,8 +1511,14 @@ msgstr "Domyślny kolor wypełnienia:"
 msgid "A default background color of a new image"
 msgstr "Domyślny kolor tła dla nowego obrazu"
 
-msgid "Lock aspect ratio:"
-msgstr "Zablokuj proporcje:"
+msgid "Lock aspect ratio"
+msgstr "Wymuś współczynnik proporcji"
+
+msgid "Portrait"
+msgstr "Orientacja pionowa"
+
+msgid "Landscape"
+msgstr "Orientacja pozioma"
 
 msgid "Templates:"
 msgstr "Szablony:"
@@ -1259,6 +1540,9 @@ msgstr "Zaznaczenie prostokątne"
 
 msgid "Zoom"
 msgstr "Przybliżenie"
+
+msgid "Pan"
+msgstr "Przesunięcie"
 
 msgid "Color Picker"
 msgstr "Próbnik"
@@ -1302,6 +1586,9 @@ msgstr "Narzędzie przypisane do prawego przycisku myszy"
 msgid "Cannot find last project file."
 msgstr "Nie można znaleźć pliku ostatniego projektu."
 
+msgid "Cannot find project file."
+msgstr "Nie można znaleźć pliku projektu."
+
 msgid "You haven't saved or opened any project in Pixelorama yet!"
 msgstr "Nie zapisałeś lub nie otworzyłeś jeszcze żadnego projektu w Pixeloramie!"
 
@@ -1330,7 +1617,7 @@ msgid "Create new directory for each frame tag"
 msgstr "Utwórz nowy katalog dla każdego tagu klatek"
 
 msgid "Creates multiple files but every file is stored in different directory that corresponds to its frame tag"
-msgstr "Tworzy wiele plików, ale każdy plik jest przechowywany w innym katalogu, który odpowiada tagowi ramki"
+msgstr "Tworzy wiele plików, ale każdy plik jest przechowywany w innym katalogu, który odpowiada tagowi klatek"
 
 msgid "Close"
 msgstr "Zamknij"
@@ -1349,6 +1636,9 @@ msgstr "Wczytano ponownię kopię zapasową"
 msgid "Remove currently selected palette"
 msgstr "Usuń aktualnie wybraną paletę"
 
+msgid "Are you sure you want to remove this palette? (Cannot be undone)"
+msgstr "Czy na pewno chcesz usunąć tą paletę? (Nie można cofnąć)"
+
 msgid "You can't remove more palettes!"
 msgstr "Nie możesz usunąć więcej palet!"
 
@@ -1357,4 +1647,61 @@ msgstr "Nie można usunąć palety, ponieważ nie istnieje!"
 
 msgid "An error occured while removing the palette! Error code: %s"
 msgstr "Wystąpił błąd podczas usuwania palety! Kod błędu: %s"
+
+msgid "and"
+msgstr "i"
+
+msgid "Move the selected frame to the left."
+msgstr "Przenieś zaznaczoną klatkę w lewo."
+
+msgid "Move the selected frame to the right."
+msgstr "Przenieś zaznaczoną klatkę w prawo."
+
+msgid "Frame duration"
+msgstr "Czas trwania klatki"
+
+msgid "Tiled In Both Axis"
+msgstr "Kafelkowanie na obu osiach"
+
+msgid "Tiled In X Axis"
+msgstr "Kafelkowanie na osi X"
+
+msgid "Tiled In Y Axis"
+msgstr "Kafelkowanie na osi Y"
+
+msgid "Create a new palette"
+msgstr "Stwórz nową paletę"
+
+msgid "Create New Palette"
+msgstr "Stwórz nową paletę"
+
+msgid "Comment:"
+msgstr "Komentarz:"
+
+msgid "Empty"
+msgstr "Pusta"
+
+msgid "From Current Palette"
+msgstr "Z bieżącej palety"
+
+msgid "From Current Sprite"
+msgstr "Z bieżącego obrazu"
+
+msgid "From Current Selection"
+msgstr "Z bieżącego zaznaczenia"
+
+msgid "Add a new color"
+msgstr "Dodaj nowy kolor"
+
+msgid "Remove a selected color"
+msgstr "Usuń wybrany kolor"
+
+msgid "Palette with the same name and path already exists!"
+msgstr "Paleta z tą nazwą i ścieżką już istnieje!"
+
+msgid "Palette name is required!"
+msgstr "Wymagana jest nazwa palety!"
+
+msgid "Reducing palette size will reset positions of colors. Colors that don't fit in new palette size will be lost!"
+msgstr "Zmniejszenie rozmiaru palety zresetuje pozycje kolorów. Kolory, które nie mieszczą się w nowym rozmiarze palety zostaną utracone!"
 

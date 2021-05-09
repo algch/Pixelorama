@@ -20,8 +20,8 @@ When reporting a bug, make sure to provide enough details, such as information a
 
 ## Contributing pull requests
 If you want to add new features or fix bugs, please make sure that:
-- The code you are submitting follows the recommended [GDScript style guide.](https://docs.godotengine.org/en/latest/getting_started/scripting/gdscript/gdscript_styleguide.html)
-  [Static typing](https://docs.godotengine.org/en/latest/getting_started/scripting/gdscript/static_typing.html) is used in the code, so please make sure the code in your PRs also use it.
+- The code you are submitting follows the recommended [GDScript style guide.](https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_styleguide.html)
+  [Static typing](https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/static_typing.html) is used in the code, so please make sure the code in your PRs also use it.
 - Avoid including unneeded files in your commits. This is true mostly for Main.tscn and other scenes, as Godot likes to change them by itself. If you haven't made changes to scenes, please **do NOT** include them in your commits.
 - Please have **Trim Trailing Whitespace On Save** enabled. This makes for cleaner VCS diffs. It's usually considered good practice to avoid trailing whitespace in files, and to make sure all files end with a single blank line.
   You can enable **Text Editor > Files > Trim Trailing Whitespace On Save** in the Editor Settings to do this automatically in the script editor.
@@ -36,13 +36,15 @@ If you want to add new features or fix bugs, please make sure that:
 - If you are adding new interactive UI elements such as buttons, don't forget to change their mouse default cursor shape to pointing arrow. Hint tooltips that explain the element's usage to the user are welcome too, just make sure to also include them in `Translations.pot`.
 - If you are adding new scripts and/or scenes, please put them somewhere inside the `src/` directory, and make sure to use PascalCase for your file and folder names. [Read this guide for more information.](https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/)
 - If you are adding images or any type of asset, please put them somewhere inside the `assets/` directory, and make sure to use snake_case for your file and folder names.
-- Do **NOT** use the `l10n_master` branch for development. Do not base your work from it, and do not open Pull Requests targeted at it. It's used specifically by Crowdin for translation handling.
+- Do **NOT** use the `l10n_master`, `release` or `gh-pages` branches for development. Do not base your work from them, and do not open Pull Requests targeted at them.
 - If you want to add an error dialog, use the existing ErrorDialog, change its text and pop it up, instead of making a new one.
 
 Please create different pull requests for each feature you'd like to implement, or each bug you'd like to fix. Make sure your pull request only handles one specific topic, and not multiple. If you want to make multiple changes, make a pull request for each of them. For this reason, it's recommended you create new branches in your forked repository, instead of using your fork's master branch.
 This [Git style guide](https://github.com/agis-/git-style-guide) has some good practices to have in mind.
 
-Keep in mind, however, that not all PRs will be merged. Some may need discussion, or others may be downright closed.
+If you are new to git, [this guide](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/) will help you.
+
+Keep in mind, however, that not all PRs will be merged. Some may need discussion, or others may be downright closed. To avoid that, it's best to create an [issue](https://github.com/Orama-Interactive/Pixelorama/issues) in the form of a proposal about the PR you are thinking to open, before actually opening it. That way, people can discuss and share their opinions and thoughts about the matter. This is especially necessary when the PR is meant to change how an already existing feature works, as some people may disagree with the change, or want to offer alternative ideas.
 <br><br>
 
 ## Contributing translations

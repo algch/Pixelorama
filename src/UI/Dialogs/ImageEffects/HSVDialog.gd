@@ -1,80 +1,61 @@
-extends WindowDialog
+extends ImageEffect
 
 
-enum {CEL, FRAME, ALL_FRAMES, ALL_PROJECTS}
+onready var hue_slider = $VBoxContainer/HBoxContainer/Sliders/Hue
+onready var sat_slider = $VBoxContainer/HBoxContainer/Sliders/Saturation
+onready var val_slider = $VBoxContainer/HBoxContainer/Sliders/Value
 
-var affect : int = CEL
-var pixels := []
-var current_cel : Image
-var preview_image : Image
-var preview_texture : ImageTexture
+onready var hue_spinbox = $VBoxContainer/HBoxContainer/TextBoxes/Hue
+onready var sat_spinbox = $VBoxContainer/HBoxContainer/TextBoxes/Saturation
+onready var val_spinbox = $VBoxContainer/HBoxContainer/TextBoxes/Value
 
-onready var hue_slider = $MarginContainer/VBoxContainer/HBoxContainer/Sliders/Hue
-onready var sat_slider = $MarginContainer/VBoxContainer/HBoxContainer/Sliders/Saturation
-onready var val_slider = $MarginContainer/VBoxContainer/HBoxContainer/Sliders/Value
+var shaderPath : String = "res://src/Shaders/HSV.shader"
 
-onready var hue_spinbox = $MarginContainer/VBoxContainer/HBoxContainer/TextBoxes/Hue
-onready var sat_spinbox = $MarginContainer/VBoxContainer/HBoxContainer/TextBoxes/Saturation
-onready var val_spinbox = $MarginContainer/VBoxContainer/HBoxContainer/TextBoxes/Value
-
-onready var preview = $MarginContainer/VBoxContainer/TextureRect
-onready var selection_checkbox : CheckBox = $MarginContainer/VBoxContainer/AffectHBoxContainer/SelectionCheckBox
-
-
-func _ready() -> void:
-	current_cel = Image.new()
-	preview_image = Image.new()
-	preview_texture = ImageTexture.new()
+var confirmed: bool = false
+func _about_to_show():
+	reset()
+	var sm : ShaderMaterial = ShaderMaterial.new()
+	sm.shader = load(shaderPath)
+	preview.set_material(sm)
+	._about_to_show()
 
 
-func _on_HSVDialog_about_to_show() -> void:
-	current_cel = Global.current_project.frames[Global.current_project.current_frame].cels[Global.current_project.current_layer].image
-	preview_image.copy_from(current_cel)
-	_on_SelectionCheckBox_toggled(selection_checkbox.pressed)
-	update_preview()
+func set_nodes() -> void:
+	preview = $VBoxContainer/Preview
+	selection_checkbox = $VBoxContainer/AffectHBoxContainer/SelectionCheckBox
+	affect_option_button = $VBoxContainer/AffectHBoxContainer/AffectOptionButton
 
 
-func _on_Cancel_pressed() -> void:
-	visible = false
+func _confirmed() -> void:
+	confirmed = true
+	._confirmed()
 	reset()
 
 
-func _on_Apply_pressed() -> void:
-	if affect == CEL:
-		Global.canvas.handle_undo("Draw")
-		DrawingAlgos.adjust_hsv(current_cel, hue_slider.value, sat_slider.value, val_slider.value, pixels)
-		Global.canvas.handle_redo("Draw")
+func commit_action(_cel : Image, _project : Project = Global.current_project) -> void:
+	var selection = _project.bitmap_to_image(_project.selection_bitmap, false)
+	var selection_tex = ImageTexture.new()
+	selection_tex.create_from_image(selection)
 
-	elif affect == FRAME:
-		Global.canvas.handle_undo("Draw", Global.current_project, -1)
-		for cel in Global.current_project.frames[Global.current_project.current_frame].cels:
-			DrawingAlgos.adjust_hsv(cel.image, hue_slider.value, sat_slider.value, val_slider.value, pixels)
-		Global.canvas.handle_redo("Draw", Global.current_project, -1)
-
-	elif affect == ALL_FRAMES:
-		Global.canvas.handle_undo("Draw", Global.current_project, -1, -1)
-		for frame in Global.current_project.frames:
-			for cel in frame.cels:
-				DrawingAlgos.adjust_hsv(cel.image, hue_slider.value, sat_slider.value, val_slider.value, pixels)
-		Global.canvas.handle_redo("Draw", Global.current_project, -1, -1)
-
-	elif affect == ALL_PROJECTS:
-		for project in Global.projects:
-			var _pixels := []
-			if selection_checkbox.pressed:
-				_pixels = project.selected_pixels.duplicate()
-			else:
-				for x in project.size.x:
-					for y in project.size.y:
-						_pixels.append(Vector2(x, y))
-
-			Global.canvas.handle_undo("Draw", project, -1, -1)
-			for frame in project.frames:
-				for cel in frame.cels:
-					DrawingAlgos.adjust_hsv(cel.image, hue_slider.value, sat_slider.value, val_slider.value, _pixels)
-			Global.canvas.handle_redo("Draw", project, -1, -1)
-	reset()
-	visible = false
+	if !confirmed:
+		preview.material.set_shader_param("hue_shift_amount", hue_slider.value /360)
+		preview.material.set_shader_param("sat_shift_amount", sat_slider.value /100)
+		preview.material.set_shader_param("val_shift_amount", val_slider.value /100)
+		preview.material.set_shader_param("selection", selection_tex)
+		preview.material.set_shader_param("affect_selection", selection_checkbox.pressed)
+		preview.material.set_shader_param("has_selection", _project.has_selection)
+	else:
+		var params = {
+			"hue_shift_amount": hue_slider.value /360,
+			"sat_shift_amount": sat_slider.value /100,
+			"val_shift_amount": val_slider.value /100,
+			"selection": selection_tex,
+			"affect_selection": selection_checkbox.pressed,
+			"has_selection": _project.has_selection
+		}
+		var gen: ShaderImageEffect = ShaderImageEffect.new()
+		gen.generate_image(_cel, shaderPath, params, _project.size)
+		yield(gen, "done")
 
 
 func reset() -> void:
@@ -86,13 +67,7 @@ func reset() -> void:
 	sat_spinbox.value = 0
 	val_spinbox.value = 0
 	reconnect_signals()
-
-
-func update_preview() -> void:
-	preview_image.copy_from(current_cel)
-	DrawingAlgos.adjust_hsv(preview_image, hue_slider.value, sat_slider.value, val_slider.value, pixels)
-	preview_texture.create_from_image(preview_image, 0)
-	preview.texture = preview_texture
+	confirmed = false
 
 
 func disconnect_signals() -> void:
@@ -129,23 +104,3 @@ func _on_Value_value_changed(value : float) -> void:
 	val_spinbox.value = value
 	val_slider.value = value
 	update_preview()
-
-
-func _on_SelectionCheckBox_toggled(button_pressed : bool) -> void:
-	pixels.clear()
-	if button_pressed:
-		pixels = Global.current_project.selected_pixels.duplicate()
-	else:
-		for x in Global.current_project.size.x:
-			for y in Global.current_project.size.y:
-				pixels.append(Vector2(x, y))
-
-	update_preview()
-
-
-func _on_AffectOptionButton_item_selected(index : int) -> void:
-	affect = index
-
-
-func _on_HSVDialog_popup_hide() -> void:
-	Global.dialog_open(false)
